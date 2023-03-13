@@ -1,0 +1,23 @@
+{
+	"name": "h.gerayzade",
+	"version": "0.0.1",
+	"private": true,
+	"scripts": {
+		"dev": "vite dev --port 3000",
+		"build": "vite build",
+		"preview": "vite preview --port 3000",
+		"stylelint": "vite stylelint 'src/**/*.{css,scss}'"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-vercel": "^2.3.1",
+		"@sveltejs/kit": "^1.5.0",
+		"@vite-pwa/sveltekit": "^0.1.3",
+		"autoprefixer": "^10.4.14",
+		"eslint": "^8.36.0",
+		"postcss": "^8.4.21",
+		"svelte": "^3.54.0",
+		"tailwindcss": "^3.2.7",
+		"vite": "^4.0.0"
+	},
+	"type": "module"
+}
