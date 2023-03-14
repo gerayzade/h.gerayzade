@@ -73,7 +73,7 @@
 
 <style lang="scss">
   .about {
-    @apply absolute inset-0 overflow-x-hidden;
+    @apply absolute inset-0;
     @apply text-center text-white/50;
     @apply flex flex-col w-full min-h-160 p-10 md:pl-120;
   }

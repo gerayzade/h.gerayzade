@@ -12,3 +12,9 @@
 <main>
   <slot />
 </main>
+
+<style lang="scss">
+  main {
+    @apply overflow-x-hidden;
+  }
+</style>
