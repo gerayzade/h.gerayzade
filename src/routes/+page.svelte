@@ -75,22 +75,22 @@
   .about {
     @apply relative overflow-x-hidden;
     @apply text-center text-white/50;
-    @apply flex flex-col w-full h-160 min-h-screen p-10;
+    @apply flex flex-col w-full h-160 min-h-screen p-10 md:pl-120;
   }
 
   .title {
-    @apply font-extrabold text-4xl sm:text-6xl text-gray-800;
-    @apply lg:mt-auto;
+    @apply font-extrabold text-4xl xs:text-6xl text-gray-800;
+    @apply md:mt-auto;
   }
 
   .subtitle {
-    @apply font-medium text-xl sm:text-2xl;
+    @apply font-medium text-xl xs:text-2xl;
     @apply mt-5;
   }
 
   .notice {
     @apply relative;
-    @apply h-12 w-54 mx-auto mt-auto lg:my-auto;
+    @apply h-12 w-54 mx-auto mt-auto md:my-auto;
 
     p {
       @apply absolute inset-0;
@@ -99,11 +99,11 @@
   }
 
   .image {
-    @apply absolute -z-10 bottom-0 left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0;
+    @apply absolute -z-10 bottom-0 left-1/2 md:left-0 lg:left-20 -translate-x-1/2 md:translate-x-0;
     @apply flex-col justify-end;
 
     img {
-      @apply w-auto max-w-none h-120 xl:h-160 2xl:h-200 max-h-full;
+      @apply w-auto max-w-none h-120 md:h-160 2xl:h-200 max-h-full;
     }
   }
 </style>
