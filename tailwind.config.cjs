@@ -1,6 +1,9 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
+    minHeight: {
+      '160': '40rem',
+    },
     screens: {
       '2xs': '360px',
       'xs': '640px',

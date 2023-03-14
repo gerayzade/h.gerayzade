@@ -73,9 +73,9 @@
 
 <style lang="scss">
   .about {
-    @apply relative overflow-x-hidden;
+    @apply absolute inset-0 overflow-x-hidden;
     @apply text-center text-white/50;
-    @apply flex flex-col w-full h-160 min-h-screen p-10 md:pl-120;
+    @apply flex flex-col w-full min-h-160 p-10 md:pl-120;
   }
 
   .title {
