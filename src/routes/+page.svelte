@@ -6,18 +6,12 @@
 
   const title = 'h.gerayzade'
 
-  let init = false
-  let show = true
-  let showTimeoutId
+  let activeSlug = null
 
-  onMount(async () => {
-    show = false
-    showTimeoutId = setTimeout(() => {
-      init = true
-      show = true
-    }, 500)
+  $: isActive = (slug) => activeSlug === slug
 
-    return () => clearTimeout(showTimeoutId)
+  onMount(() => {
+    activeSlug = 'about'
   })
 </script>
 
@@ -26,11 +20,8 @@
   <meta name="description" content={META_DESCRIPTION} />
 </svelte:head>
 
-{#if show}
-<section
-  class="about"
-  class:opacity-0={!init}
->
+{#if isActive('about')}
+<section class="about">
   <h1
     class="title"
     in:fly={{
@@ -49,15 +40,14 @@
   >
     {'<front-end-dev />'}
   </h2>
-  <div class="notice">
-    <p
-      in:type={{
-        speed: 2,
-      }}
-    >
-      website under construction, please come back later :)
-    </p>
-  </div>
+  <p
+    class="greeting"
+    in:type={{
+      speed: 2.5,
+    }}
+  >
+    website under construction, please come back later :)
+  </p>
   <div class="image">
     <img
       src="/images/h.g.png"
@@ -88,14 +78,9 @@
     @apply mt-5;
   }
 
-  .notice {
-    @apply relative;
-    @apply h-12 w-54 mx-auto mt-auto md:my-auto;
-
-    p {
-      @apply absolute inset-0;
-      @apply font-medium;
-    }
+  .greeting {
+    @apply font-medium;
+    @apply h-12 w-60 mx-auto mt-auto md:my-auto;
   }
 
   .image {
