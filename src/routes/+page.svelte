@@ -43,6 +43,7 @@
   <p
     class="greeting"
     in:type={{
+      delay: 1000,
       speed: 2.5,
     }}
   >
@@ -80,7 +81,7 @@
 
   .greeting {
     @apply font-medium;
-    @apply h-12 w-60 mx-auto mt-auto md:my-auto;
+    @apply h-12 w-64 mx-auto mt-auto md:mt-5 md:mb-auto;
   }
 
   .image {

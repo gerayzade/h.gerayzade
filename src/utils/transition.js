@@ -8,7 +8,7 @@ export const type = (node, { delay, speed = 1 }) => {
       const typed = Math.floor(text.length * t)
       node.innerHTML = Array.from(text).reduce((acc, letter, i) => {
         if (t === 1) return text
-        const opacity = i > typed ? 0 : 1
+        const opacity = i >= typed ? 0 : 1
         return acc += `<span style="opacity: ${opacity};">${letter}</span>`
       }, '')
     }
