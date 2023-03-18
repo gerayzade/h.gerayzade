@@ -28,6 +28,7 @@
 <svelte:head>
 	<title>{title}</title>
   <meta name="description" content={META_DESCRIPTION} />
+  <link rel="preload" as="image" href="/images/h.g.png" />
 </svelte:head>
 
 {#if isActive('about')}
