@@ -126,7 +126,7 @@
       @apply transition-[filter] duration-300 delay-1000;
 
       @media (hover: none) {
-        @apply delay-0;
+        @apply delay-[0];
       }
     }
   }
