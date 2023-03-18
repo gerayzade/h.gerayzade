@@ -124,6 +124,10 @@
     &.hasDropShadow {
       @apply drop-shadow-emerald;
       @apply transition-[filter] duration-300 delay-1000;
+
+      @media (hover: none) {
+        @apply transition-[filter] duration-300;
+      }
     }
   }
 </style>
