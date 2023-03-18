@@ -1,8 +1,15 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    minHeight: {
-      '160': '40rem',
+    dropShadow: {
+      'emerald': [
+        `-0.25em -0.25em ${colors['emerald']['600']}`,
+        `-0.25em 0.25em ${colors['emerald']['600']}`,
+        `0.25em -0.25em ${colors['emerald']['600']}`,
+        `0.25em 0.25em ${colors['emerald']['600']}`,
+      ],
     },
     screens: {
       '2xs': '360px',
@@ -12,13 +19,6 @@ module.exports = {
       'lg': '1200px',
       'xl': '1440px',
       '2xl': '1920px',
-    },
-    extend: {
-      spacing: {
-        '120': '30rem',
-        '160': '40rem',
-        '200': '50rem',
-      },
     },
   },
   plugins: [],

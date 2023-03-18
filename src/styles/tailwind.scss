@@ -1,8 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@tailwind screens;
 
-body {
-  @apply bg-cyan-600;
+html {
+  @apply max-2xs:text-[12px];
+  @apply bg-gray-800;
 }
