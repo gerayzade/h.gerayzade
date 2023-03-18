@@ -122,10 +122,8 @@
     }
 
     &.hasDropShadow {
-      img {
-        @apply drop-shadow-emerald;
-        @apply transition-[filter] duration-300 delay-1000;
-      }
+      @apply drop-shadow-emerald;
+      @apply transition-[filter] duration-300 delay-1000;
     }
   }
 </style>
