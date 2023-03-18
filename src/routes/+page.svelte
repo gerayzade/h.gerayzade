@@ -115,14 +115,16 @@
     @apply absolute -z-10 bottom-0 left-1/2 md:left-0 lg:left-[5rem] -translate-x-1/2 md:translate-x-0;
     @apply flex-col justify-end;
 
-    &.hasDropShadow {
-      @apply drop-shadow-emerald;
-      @apply transition-[filter] duration-300 delay-1000;
-    }
-
     img {
       @apply w-auto max-w-none h-[22rem] xs:h-[28rem] md:h-[40rem] 2xl:h-[48rem] max-h-full;
       @apply grayscale brightness-75;
+    }
+
+    &.hasDropShadow {
+      img {
+        @apply drop-shadow-emerald;
+        @apply transition-[filter] duration-300 delay-1000;
+      }
     }
   }
 </style>
