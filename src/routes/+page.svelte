@@ -118,7 +118,7 @@
 
     img {
       @apply w-auto max-w-none h-[22rem] xs:h-[28rem] md:h-[40rem] 2xl:h-[48rem] max-h-full;
-      @apply grayscale brightness-75 will-change-[filter];
+      @apply grayscale brightness-75;
     }
 
     &.hasDropShadow {
