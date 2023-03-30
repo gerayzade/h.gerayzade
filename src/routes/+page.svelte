@@ -1,5 +1,4 @@
 <script>
-  import { onMount } from 'svelte'
   import { bounceOut } from 'svelte/easing'
   import {
     fly,
@@ -10,19 +9,10 @@
 
   const title = 'h·gerayzade'
 
-  let activeSlug = null
-  let timeoutId = null
+  let activeSlug = 'about'
   let drawCircle = false
 
   $: isActive = (slug) => activeSlug === slug
-
-  onMount(() => {
-    timeoutId = setTimeout(() => {
-      activeSlug = 'about'
-    }, 500)
-
-    return () => clearTimeout(timeoutId)
-  })
 </script>
 
 <svelte:head>
