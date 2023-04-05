@@ -57,7 +57,7 @@
     class:hasDropShadow={drawCircle}
   >
     <img
-      src="/images/h.g.png"
+      src="/images/h.g-min.png"
       alt={title}
       in:fly={{
         duration: 1000,
