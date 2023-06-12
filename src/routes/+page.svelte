@@ -18,7 +18,7 @@
 <svelte:head>
 	<title>{title}</title>
   <meta name="description" content={META_DESCRIPTION} />
-  <link rel="preload" as="image" href="/images/h.g.png" />
+  <link rel="preload" as="image" href="/images/h.g-min.webp" />
 </svelte:head>
 
 {#if isActive('about')}
@@ -57,7 +57,7 @@
     class:hasDropShadow={drawCircle}
   >
     <img
-      src="/images/h.g-min.png"
+      src="/images/h.g-min.webp"
       alt={title}
       in:fly={{
         duration: 1000,
