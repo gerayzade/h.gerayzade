@@ -50,7 +50,7 @@
       speed: 2.5,
     }}
   >
-    Hi there, I'm Heydar, a front-end developer with 5+ years of tech wizardry up my sleeves.
+    Hi there, I'm Heydar, a front-end developer with 6+ years of tech wizardry up my sleeves.
   </p>
   <div
     class="image"

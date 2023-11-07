@@ -1,5 +1,5 @@
 export const META_DESCRIPTION = `
-  Heydar Gerayzade, a front-end developer with 5+ years of professional experience
+  Heydar Gerayzade, a front-end developer with 6+ years of professional experience
 `
 
 export const SOCIALS = [
