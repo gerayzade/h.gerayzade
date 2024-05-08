@@ -25,7 +25,15 @@ defineComponent({
 
 const displayCircle = ref(false)
 
+const timeoutId = ref<TimeoutId>(-1)
+
 onMounted(() => {
-  displayCircle.value = true
+  timeoutId.value = setTimeout(() => {
+    displayCircle.value = true
+  }, 150)
+})
+
+onBeforeUnmount(() => {
+  clearTimeout(timeoutId.value)
 })
 </script>
