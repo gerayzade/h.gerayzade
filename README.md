@@ -36,7 +36,7 @@ npm run dev
 To build and run our development Docker image, we can use the `docker-compose command` with the `-f` option to specify the override file:
 
 ```bash
-docker compose -f docker/docker-compose.yml -f docker/docker-compose.dev.yml up --build
+docker compose -f docker-compose.yml -f docker-compose.dev.yml up --build
 ```
 
 In this command, `-f docker-compose.yml -f docker-compose.dev.yml` tells docker compose to use both the production and development compose files, with the settings in the development file overriding those in the production file. `up --build` builds the images and starts the containers.
@@ -55,7 +55,7 @@ npm run build
 To build and run our production Docker image, we can use the `docker-compose up` command:
 
 ```bash
-docker compose -f docker/docker-compose.yml up --build
+docker compose -f docker-compose.yml up --build
 ```
 
 ## Static Site Generation
@@ -73,5 +73,5 @@ npx serve .output/public
 To generate static pages and run our production Docker image, we can use the `docker-compose command` with the `-f` option to specify the override file:
 
 ```bash
-docker compose -f docker/docker-compose.static.yml up --build
+docker compose -f docker-compose.static.yml up --build
 ```

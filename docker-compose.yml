@@ -2,7 +2,7 @@ version: "3"
 services:
   h.gerayzade:
     build:
-      context: ..
-      dockerfile: ./docker/Dockerfile
+      context: .
+      dockerfile: ./Dockerfile
     ports:
       - "8888:3000"

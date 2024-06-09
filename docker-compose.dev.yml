@@ -4,11 +4,11 @@ volumes:
 services:
   h.gerayzade-dev:
     build:
-      context: ..
-      dockerfile: ./docker/Dockerfile.dev
+      context: .
+      dockerfile: ./Dockerfile.dev
     ports:
       - "3000:3000"
       - "24678:24678" # mapping an additional port (24678) to allow Vite to perform hot module reloading
     volumes:
-      - ..:/src
+      - .:/src
       - node_modules:/src/node_modules
