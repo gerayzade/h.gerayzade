@@ -1,0 +1,110 @@
+//
+// mixins
+// --------------------------------------------------
+
+//== Media queries
+//
+@mixin mobile {
+  @media screen and (max-width: $xs) {
+    @content;
+  }
+}
+
+@mixin tablet-and-mobile-only {
+  @media screen and (max-width: ($md - 1px)), screen and (min-width: $md) and (max-width: ($lg - 1px)) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin tablet-only {
+  @media screen and (min-width: $sm) and (max-width: ($md - 1px)), screen and (min-width: $md) and (max-width: ($lg - 1px)) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media screen and (min-width: $sm) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $md) and (orientation: landscape), screen and (min-width: $lg) and (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin widescreen {
+  @media screen and (min-width: $lg) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+//== Flexbox
+//
+@mixin flex-middle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-full-height {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 100%;
+}
+
+//== Position
+//
+@mixin position-middle ($position: absolute) {
+  position: $position;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin position-0 ($position: absolute) {
+  position: $position;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+//== SVG
+//
+@mixin svg-color ($color) {
+  [fill] {
+    fill: $color;
+  }
+
+  [stroke] {
+    stroke: $color;
+  }
+}
+
+//== Buttons
+//
+@mixin btn-transition-darken ($btn-bg-color, $hover-darken: 3%, $active-darken: 6%) {
+  transition: background-color 0.2s;
+
+  @media (hover: hover) {
+    &:hover {
+      background-color: darken($btn-bg-color, $hover-darken)
+    }
+  
+    &:active {
+      background-color: darken($btn-bg-color, $active-darken);
+      transition: background-color 0s;
+    }
+  }
+}

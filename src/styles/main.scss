@@ -1,0 +1,27 @@
+//
+// main.scss
+// --------------------------------------------------
+
+@import 'reset';
+@import 'transitions';
+
+html {
+  -webkit-text-size-adjust: 100%;
+  font-feature-settings: normal;
+  font-family: ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;
+  line-height: 1.5;
+  font-size: 2vw;
+  tab-size: 4;
+}
+
+body {
+  color: $white;
+  background-color: $primary;
+}
+
+html,
+body,
+#_nuxt {
+  height: 100%;
+  width: 100%;
+}
