@@ -3,7 +3,10 @@ import { vitePreprocess } from '@sveltejs/kit/vite'
 
 const config = {
 	kit: {
-		adapter: adapter(),
+		adapter: adapter({
+      // explicitly tell Vercel to use Node 22
+      runtime: 'nodejs22.x',
+    }),
 	},
 	preprocess: vitePreprocess(),
 }
