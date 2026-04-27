@@ -1,0 +1,33 @@
+//
+// main.scss
+// --------------------------------------------------
+
+@use './tailwind';
+@use './globals';
+
+body {
+  font-optical-sizing: auto;
+  /* For better font rendering on web */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// App
+
+html,
+body,
+#__nuxt {
+  width: 100%;
+  height: 100%;
+}
+
+.break-words {
+  word-break: break-word;
+}
+
+// Position
+
+.absolute-middle {
+  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+}
