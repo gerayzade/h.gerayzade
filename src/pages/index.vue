@@ -1,10 +1,5 @@
 <script setup lang="ts">
-import { websiteTitle } from '@/utils/constants'
-
-const greeting = `
-  Hi there, I'm Heydar — a front-end developer with
-  over 10 years of hands-on experience in tech!
-`
+import { websiteTitle } from '~/utils/constants'
 
 const animate = ref(false)
 
@@ -13,36 +8,44 @@ onMounted(async () => {
   animate.value = true
 })
 
-const { html: greetingHtml } = useTypewriter(greeting, {
+const { html: greetingHtml } = useTypewriter(`
+  Hi there, I'm Heydar — a front-end developer with
+  over 10 years of hands-on experience in tech!
+`, {
   delay: 2000,
-  speed: 2.5,
+  speed: 4,
 })
 </script>
 
 <template>
-  <section class="hero-section">
-    <h1
-      class="hero-title"
-      :class="{ animate }"
-    >
-      <span>{{ websiteTitle.slice(0, 3) }}</span>
-      <span>{{ websiteTitle.slice(3) }}</span>
+  <section class="hero-section absolute inset-0 flex w-full flex-col p-16 text-center text-white md:pl-[34rem]">
+    <h1 class="relative -translate-y-2.5 animate-[hero-fly-down_1000ms_ease_forwards] self-center text-4xl font-extrabold opacity-0 sm:mt-16 sm:text-6xl md:mt-auto">
       <span
-        class="circle"
-        :class="{ animate }"
+        class="ml-[0.05em] transition-colors delay-1000 duration-300"
+        :class="{ 'text-gray-800': animate }"
+      >
+        {{ websiteTitle.slice(0, 3) }}
+      </span>
+      <span>
+        {{ websiteTitle.slice(3) }}
+      </span>
+      <span
+        class="absolute left-[-0.2em] top-1/2 -z-10 h-[1.9em] w-[1.9em] -translate-y-1/2 scale-0 rounded-full bg-emerald-600 opacity-0"
+        :class="{ 'animate-[hero-circle-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_1000ms_forwards]': animate }"
       />
     </h1>
     <!-- eslint-disable vue/no-v-html -->
     <p
-      class="greeting"
+      class="mx-auto mt-14 w-72 max-w-full font-medium sm:mt-16 sm:w-96 md:mb-auto"
       v-html="greetingHtml"
     />
     <!-- eslint-enable vue/no-v-html -->
     <div
-      class="hero-image"
-      :class="{ animate }"
+      class="absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 flex-col justify-end [transition:filter_300ms_ease_1000ms] md:left-0 md:translate-x-0 lg:left-20 [@media(hover:none)]:delay-0"
+      :class="{ 'drop-shadow-emerald': animate }"
     >
       <img
+        class="h-[22rem] max-h-full w-auto max-w-none translate-y-5 animate-[hero-fly-up_1000ms_ease_forwards] opacity-0 brightness-75 grayscale xs:h-[28rem] md:h-[40rem] 2xl:h-[48rem]"
         src="/images/h.g-min.webp"
         :alt="websiteTitle"
       >
@@ -51,85 +54,20 @@ const { html: greetingHtml } = useTypewriter(greeting, {
 </template>
 
 <style lang="scss">
-@keyframes flyDown {
-  from { opacity: 0; transform: translateY(-10px) !important; }
-  to   { opacity: 1; transform: translateY(0) !important; }
+@keyframes hero-fly-down {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes flyUp {
+@keyframes hero-fly-up {
   from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes bouncePop {
+@keyframes hero-circle-pop {
   0%   { opacity: 0; transform: translateY(-50%) scale(0); }
   60%  { opacity: 1; transform: translateY(-50%) scale(1.15); }
   80%  { opacity: 1; transform: translateY(-50%) scale(0.92); }
   100% { opacity: 1; transform: translateY(-50%) scale(1); }
-}
-
-.hero-section {
-  @apply absolute inset-0;
-  @apply text-center text-white;
-  @apply flex flex-col w-full p-[4rem] md:pl-[34rem];
-
-  .hero-title {
-    @apply relative;
-    @apply font-extrabold text-4xl sm:text-6xl;
-    @apply self-center sm:mt-[4rem] md:mt-auto;
-
-    opacity: 0;
-    transform: translateY(-10px);
-    animation: flyDown 1000ms ease forwards;
-
-    span:nth-child(1) {
-      transition: color 300ms ease 1000ms;
-    }
-
-    &.animate span:nth-child(1) {
-      @apply text-gray-800;
-    }
-  }
-
-  .circle {
-    @apply absolute -z-10 -left-[0.2em] top-1/2 -translate-y-1/2;
-    @apply w-[1.9em] h-[1.9em] bg-emerald-600 rounded-full;
-
-    opacity: 0;
-    transform: translateY(-50%) scale(0);
-
-    &.animate {
-      animation: bouncePop 300ms cubic-bezier(0.215, 0.61, 0.355, 1.5) 1000ms forwards;
-    }
-  }
-
-  .greeting {
-    @apply font-medium;
-    @apply w-[18rem] sm:w-[24rem] max-w-full mx-auto mt-[3.5rem] sm:mt-[4rem] md:mb-auto;
-  }
-
-  .hero-image {
-    @apply absolute -z-10 bottom-0 left-1/2 md:left-0 lg:left-[5rem] -translate-x-1/2 md:translate-x-0;
-    @apply flex-col justify-end;
-
-    transition: filter 300ms ease 1000ms;
-
-    &.animate {
-      @apply drop-shadow-emerald;
-
-      @media (hover: none) {
-        transition-delay: 0ms;
-      }
-    }
-  }
-
-  .hero-image img {
-    @apply w-auto max-w-none h-[22rem] xs:h-[28rem] md:h-[40rem] 2xl:h-[48rem] max-h-full;
-    @apply grayscale brightness-75;
-
-    opacity: 0;
-    transform: translateY(20px);
-    animation: flyUp 1000ms ease forwards;
-  }
 }
 </style>

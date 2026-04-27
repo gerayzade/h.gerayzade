@@ -17,14 +17,13 @@
     "lint:fix": "npm run lint -- --fix",
     "preview": "nuxt preview --port 3000",
     "postinstall": "nuxt prepare",
-    "typecheck": "nuxt typecheck",
     "prepare": "husky",
-    "type-check": "vue-tsc --noEmit"
+    "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
     "nuxt": "^4.4.2",
     "vue": "^3.5.0",
-    "vue-router": "^4.4.0",
+    "vue-router": "^5.0.3",
     "@nuxtjs/device": "^4.0.0",
     "@pinia/nuxt": "^0.11.3",
     "@vueuse/core": "^13.9.0",

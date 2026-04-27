@@ -12,9 +12,24 @@ const {
 
 const isDevelopment = NODE_ENV === 'development'
 
-const useDevServer = isDevelopment && DEV_CERT_PATH && DEV_CERT_KEY_PATH
+const httpsServerOptions = {
+  key: DEV_CERT_KEY_PATH,
+  cert: DEV_CERT_PATH,
+}
+
+const useDevServer = isDevelopment
+  && httpsServerOptions.key
+  && httpsServerOptions.cert
 
 export default defineNuxtConfig({
+  compatibilityDate: '2026-04-27',
+  srcDir: 'src/',
+  modules: [
+    '@nuxtjs/device',
+    '@nuxtjs/tailwindcss',
+    '@vite-pwa/nuxt',
+    '@pinia/nuxt',
+  ],
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
@@ -40,23 +55,9 @@ export default defineNuxtConfig({
       ],
     },
   },
-  compatibilityDate: '2026-04-27',
-  devServer: useDevServer
-    ? {
-      https: {
-        key: DEV_CERT_KEY_PATH,
-        cert: DEV_CERT_PATH,
-      },
-    }
-    : undefined,
-  devtools: {
-    enabled: isDevelopment,
-  },
-  experimental: {
-    // Fix duplicate useAppConfig auto-import warning on every dev start
-    // More info: https://github.com/nuxt/nuxt/issues/34812
-    serverAppConfig: false,
-  },
+  css: [
+    '@/styles/main.scss',
+  ],
   imports: {
     // Auto-import composables, stores and utils
     dirs: [
@@ -67,22 +68,6 @@ export default defineNuxtConfig({
       'utils',
     ],
   },
-  modules: [
-    '@nuxtjs/device',
-    '@nuxtjs/tailwindcss',
-    '@vite-pwa/nuxt',
-    '@pinia/nuxt',
-  ],
-  css: [
-    '@/styles/main.scss',
-  ],
-  nitro: {
-    preset: 'vercel',
-    prerender: {
-      routes: ['/'],
-    },
-  },
-  srcDir: 'src/',
   pwa: {
     registerType: 'autoUpdate',
     injectRegister: 'auto',
@@ -97,12 +82,11 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: false,
   },
-  typescript: {
-    strict: true,
-    typeCheck: false,
-  },
-  sourcemap: {
-    client: 'hidden',
+  nitro: {
+    preset: 'vercel',
+    prerender: {
+      routes: ['/'],
+    },
   },
   vite: {
     build: {
@@ -115,10 +99,7 @@ export default defineNuxtConfig({
     },
     server: useDevServer
       ? {
-        https: {
-          key: DEV_CERT_KEY_PATH,
-          cert: DEV_CERT_PATH,
-        },
+        https: httpsServerOptions,
         hmr: {
           protocol: 'wss',
           clientPort: Number(PORT),
@@ -136,6 +117,28 @@ export default defineNuxtConfig({
       entries: [
         './**/*.vue',
       ],
+      include: [
+        '@vue/devtools-core',
+        '@vue/devtools-kit',
+      ],
     },
+  },
+  devServer: useDevServer
+    ? { https: httpsServerOptions }
+    : undefined,
+  devtools: {
+    enabled: isDevelopment,
+  },
+  experimental: {
+    // Fix duplicate useAppConfig auto-import warning on every dev start
+    // More info: https://github.com/nuxt/nuxt/issues/34812
+    serverAppConfig: false,
+  },
+  sourcemap: {
+    client: 'hidden',
+  },
+  typescript: {
+    strict: true,
+    typeCheck: false,
   },
 })
