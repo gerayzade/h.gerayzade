@@ -5,11 +5,6 @@
   "plugins": [
     "tailwindcss"
   ],
-  "ignorePatterns": [
-    "src/unused/**",
-    // Shadcn files
-    "src/@core/**"
-  ],
   "rules": {
     "comma-dangle": ["error", "always-multiline"],
     "indent": ["error", 2, { "SwitchCase": 1 }],

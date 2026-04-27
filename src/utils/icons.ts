@@ -1,12 +1,10 @@
-import type { SocialName } from './constants'
-
 export interface IconDef {
   width: number
   height: number
   content: string
 }
 
-const icons: Record<SocialName, IconDef> = {
+const icons: Record<string, IconDef> = {
   github: {
     width: 77,
     height: 74,

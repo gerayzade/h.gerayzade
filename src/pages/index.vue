@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const title = 'h·gerayzade'
+import { websiteTitle } from '@/utils/constants'
 
 const greeting = `
   Hi there, I'm Heydar — a front-end developer with
@@ -25,8 +25,8 @@ const { html: greetingHtml } = useTypewriter(greeting, {
       class="hero-title"
       :class="{ animate }"
     >
-      <span>{{ title.slice(0, 3) }}</span>
-      <span>{{ title.slice(3) }}</span>
+      <span>{{ websiteTitle.slice(0, 3) }}</span>
+      <span>{{ websiteTitle.slice(3) }}</span>
       <span
         class="circle"
         :class="{ animate }"
@@ -44,7 +44,7 @@ const { html: greetingHtml } = useTypewriter(greeting, {
     >
       <img
         src="/images/h.g-min.webp"
-        :alt="title"
+        :alt="websiteTitle"
       >
     </div>
   </section>

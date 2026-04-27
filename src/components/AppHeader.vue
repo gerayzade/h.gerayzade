@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { SOCIALS } from '@/utils/constants'
+import { socials } from '@/utils/constants'
 </script>
 
 <template>
   <header class="header">
     <div class="socials">
       <a
-        v-for="(social, index) in SOCIALS"
+        v-for="(social, index) in socials"
         :key="social.name"
         class="socialsLink"
         :href="social.href"

@@ -1,4 +1,7 @@
-import { META_DESCRIPTION } from './app/utils/constants'
+import {
+  websiteDescription,
+  websiteTitle,
+} from './src/utils/constants'
 
 const {
   DEV_CERT_PATH,
@@ -15,14 +18,14 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: 'en' },
-      title: 'h·gerayzade',
+      title: websiteTitle,
       meta: [
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', 'content': 'ie=edge' },
         { name: 'viewport', content: 'width=device-width' },
         { name: 'theme-color', content: '#1F2937' },
-        { name: 'description', content: META_DESCRIPTION },
-        { name: 'apple-mobile-web-app-title', content: 'h·gerayzade' },
+        { name: 'description', content: websiteDescription },
+        { name: 'apple-mobile-web-app-title', content: websiteTitle },
         { name: 'apple-mobile-web-app-status-bar-style', content: '#1F2937' },
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'msapplication-config', content: '/browserconfig.xml' },
@@ -79,6 +82,7 @@ export default defineNuxtConfig({
       routes: ['/'],
     },
   },
+  srcDir: 'src/',
   pwa: {
     registerType: 'autoUpdate',
     injectRegister: 'auto',
