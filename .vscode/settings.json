@@ -1,3 +1,14 @@
 {
+  "workbench.editorAssociations": {
+    "*.svg": "default"
+  },
+  "commentAnchors.tags.anchors": {
+    "❗": {
+      "scope": "hidden",
+      "highlightColor": "#DC2626",
+      "styleComment": true,
+      "isItalic": false
+    }
+  },
   "scss.lint.unknownAtRules": "ignore"
 }

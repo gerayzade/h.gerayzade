@@ -1,0 +1,21 @@
+{
+  "extends": [
+    "@nuxtjs/eslint-config-typescript"
+  ],
+  "plugins": [
+    "tailwindcss"
+  ],
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "indent": ["error", 2, { "SwitchCase": 1 }],
+    "no-multiple-empty-lines": ["error", { "max": 4 }],
+    "operator-linebreak": ["error", "before"],
+    "quote-props": ["error", "consistent"],
+    "vue/no-multiple-template-root": "off",
+    "tailwindcss/classnames-order": "error",
+    "tailwindcss/enforces-negative-arbitrary-values": "error",
+    "tailwindcss/enforces-shorthand": "error",
+    "tailwindcss/no-contradicting-classname": "error",
+    "tailwindcss/no-unnecessary-arbitrary-value": "error"
+  }
+}
