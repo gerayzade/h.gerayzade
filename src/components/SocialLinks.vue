@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import socials from '@/utils/socials'
+import socials from '@/data/socials'
 </script>
 
 <template>
-  <header class="app-header fixed right-0 top-0 z-10 flex items-center max-md:bottom-0 sm:right-4 md:top-4">
+  <div class="social-links fixed right-0 top-0 z-10 flex items-center max-md:bottom-0 sm:right-4 md:top-4">
     <div class="flex flex-col items-center">
       <a
         v-for="(social, index) in socials"
         :key="social.name"
-        class="scale-0 animate-[app-header-social-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_forwards] p-3 text-white opacity-0 transition-colors duration-150 hover:text-emerald-600 [&_svg]:size-6"
+        class="scale-0 animate-[social-link-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_forwards] p-3 text-white opacity-0 transition-colors duration-150 hover:text-emerald-600 [&_svg]:size-6"
         :href="social.href"
         target="_blank"
         rel="noopener"
-        :style="{ animationDelay: `${2300 + 150 * index}ms` }"
+        :style="{ animationDelay: `${1000 + 150 * index}ms` }"
       >
         <component :is="social.icon" />
       </a>
     </div>
-  </header>
+  </div>
 </template>
 
 <style lang="scss">
-@keyframes app-header-social-pop {
+@keyframes social-link-pop {
   0%   { opacity: 0; transform: scale(0); }
   60%  { opacity: 1; transform: scale(1.15); }
   80%  { opacity: 1; transform: scale(0.92); }

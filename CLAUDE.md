@@ -24,17 +24,17 @@ There are no test or lint scripts.
 
 ## Architecture notes
 
-- Source root is `app/` (Nuxt 4 default `srcDir`).
-- Routing: file-based under `app/pages/`. Single page (`index.vue`).
-- Layout: `app/layouts/default.vue` wraps every page; mounts `<AppHeader />` and a `<main>` with `<slot />`. The wrapper is `display: none` until 500ms after mount to give the SW a beat to register and to keep entry animations from firing during hydration.
-- Components in `app/components/` are auto-imported by Nuxt — use `<AppHeader />`, `<SvgIcon />` directly without imports.
-- Composables in `app/composables/` are also auto-imported. `useTypewriter` reproduces the original Svelte typewriter transition.
+- Source root is `src/` (Nuxt's `srcDir`).
+- Routing: file-based under `src/pages/`. Single page (`index.vue`).
+- Layout: `src/layouts/default.vue` wraps every page; mounts `<main>` with `<slot />`. The wrapper is `display: none` until 500ms after mount to give the SW a beat to register and to keep entry animations from firing during hydration.
+- Components in `src/components/` are auto-imported by Nuxt — use directly without imports.
+- Composables in `src/composables/` are also auto-imported. `useTypewriter` reproduces the original Svelte typewriter transition.
 - Static assets live in `public/` (favicon, manifest, browserconfig, hero image).
 
 ## Path aliases
 
-- `~` and `@` both resolve to `app/` (Nuxt's `srcDir`).
-- Use `~/utils/...`, `~/components/...`, etc.
+- `~` and `@` both resolve to `src/` (Nuxt's `srcDir`).
+- Use `@/utils/...`, `@/components/...`, etc.
 
 ## Tailwind
 
