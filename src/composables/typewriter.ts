@@ -1,10 +1,7 @@
-interface UseTypewriterOptions {
-  delay?: number
-  speed?: number
-}
-
-export const useTypewriter = (text: string, options: UseTypewriterOptions = {}) => {
-  const { delay = 0, speed = 1 } = options
+export const useTypewriter = (text: string, {
+  delay = 0,
+  speed = 1,
+} = {}) => {
   const html = ref('')
 
   const buildFrame = (t: number): string => {
@@ -12,10 +9,12 @@ export const useTypewriter = (text: string, options: UseTypewriterOptions = {}) 
       return text
     }
     const typed = Math.floor(text.length * t)
-    return Array.from(text).reduce((acc, letter, i) => {
-      const opacity = i >= typed ? 0 : 1
-      return acc + `<span style="opacity: ${opacity};">${letter}</span>`
-    }, '')
+    return Array
+      .from(text)
+      .reduce((acc, letter, i) => {
+        const opacity = i >= typed ? 0 : 1
+        return acc + `<span style="opacity: ${opacity};">${letter}</span>`
+      }, '')
   }
 
   onMounted(() => {
@@ -36,12 +35,12 @@ export const useTypewriter = (text: string, options: UseTypewriterOptions = {}) 
       }
     }
 
-    const timeoutId = window.setTimeout(() => {
+    const timeoutId = setTimeout(() => {
       rafId = requestAnimationFrame(tick)
     }, delay)
 
     return () => {
-      window.clearTimeout(timeoutId)
+      clearTimeout(timeoutId)
       cancelAnimationFrame(rafId)
     }
   })
