@@ -4,8 +4,7 @@ import SocialLinks from '@/components/SocialLinks.vue'
 
 const animate = ref(false)
 
-onMounted(async () => {
-  await sleep(1000)
+onMounted(() => {
   animate.value = true
 })
 
@@ -13,7 +12,7 @@ const { html: greetingHtml } = useTypewriter(`
   Hi there, I'm Heydar — a front-end developer with
   over 10 years of hands-on experience in tech!
 `, {
-  delay: 2000,
+  delay: 1000,
   speed: 4,
 })
 </script>
