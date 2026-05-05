@@ -20,8 +20,8 @@ const { html: greetingHtml } = useTypewriter(`
 <template>
   <div class="index-page">
     <SocialLinks v-show="animate" />
-    <section class="hero-section absolute inset-0 flex w-full flex-col p-16 text-center text-white md:pl-[34rem]">
-      <h1 class="relative -translate-y-2.5 animate-[hero-fly-down_1000ms_ease_forwards] self-center text-4xl font-extrabold opacity-0 sm:mt-16 sm:text-6xl md:mt-auto">
+    <section class="hero-section absolute inset-0 flex min-h-[40rem] w-full flex-col p-16 text-center text-white xs:min-h-[48rem] md:min-h-0 md:pl-[34rem]">
+      <h1 class="relative -translate-y-2.5 animate-[hero-fly-down_1000ms_ease_forwards] self-center text-4xl font-extrabold opacity-0 md:mt-auto md:text-6xl">
         <span
           class="ml-[0.05em] transition-colors delay-1000 duration-300"
           :class="{ 'text-gray-800': animate }"
@@ -38,17 +38,23 @@ const { html: greetingHtml } = useTypewriter(`
       </h1>
       <!-- eslint-disable vue/no-v-html -->
       <p
-        class="mx-auto mt-14 w-72 max-w-full font-medium sm:mt-16 sm:w-96 md:mb-auto"
+        class="mx-auto mt-14 w-72 max-w-full font-medium md:mb-auto md:mt-16 md:w-96"
         v-html="greetingHtml"
       />
       <!-- eslint-enable vue/no-v-html -->
+      <!-- TODO: Display animated scroll-down icon after more sections are coded -->
+      <!-- <div
+        v-show="animate"
+        v-lottie="'scroll-down'"
+        class="mx-auto mt-6 size-12"
+      /> -->
       <div
         class="absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 flex-col justify-end [transition:filter_300ms_ease_1000ms] md:left-0 md:translate-x-0 lg:left-20 [@media(hover:none)]:delay-0"
         :class="{ 'drop-shadow-emerald': animate }"
       >
         <img
-          class="h-[22rem] max-h-full w-auto max-w-none translate-y-5 animate-[hero-fly-up_1000ms_ease_forwards] opacity-0 brightness-75 grayscale xs:h-[28rem] md:h-[40rem] 2xl:h-[48rem]"
-          src="/images/h.g-min.webp"
+          class="h-80 max-h-full w-auto max-w-none translate-y-5 animate-[hero-fly-up_1000ms_ease_forwards] opacity-0 brightness-75 xs:h-[28rem] md:h-[40rem] 2xl:h-[48rem]"
+          src="/images/h.g.webp"
           :alt="websiteTitle"
         >
       </div>
