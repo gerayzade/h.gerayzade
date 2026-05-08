@@ -1,3 +1,4 @@
+import { Breakpoint } from './src/entities/theme/breakpoint'
 import {
   websiteDescription,
   websiteTitle,
@@ -25,6 +26,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2026-04-27',
   srcDir: 'src/',
   modules: [
+    '@nuxt/image',
     '@nuxtjs/device',
     '@nuxtjs/tailwindcss',
     '@vite-pwa/nuxt',
@@ -60,6 +62,14 @@ export default defineNuxtConfig({
   css: [
     '@/styles/main.scss',
   ],
+  image: {
+    // The screen sizes predefined by `@nuxt/image`:
+    screens: Object.keys(Breakpoint)
+      .reduce((acc, mq) => {
+        acc[mq] = Breakpoint[mq as keyof typeof Breakpoint]
+        return acc
+      }, {} as Record<string, number>),
+  },
   imports: {
     // Auto-import composables, stores and utils
     dirs: [

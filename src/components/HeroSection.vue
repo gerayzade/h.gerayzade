@@ -65,11 +65,11 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
       class="absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 flex-col justify-end [transition:filter_300ms_ease_1000ms] md:left-0 md:translate-x-0 lg:left-20"
       :class="{ 'drop-shadow-emerald': isSectionMounted }"
     >
-      <img
+      <NuxtImg
         class="h-80 w-auto max-w-none translate-y-5 animate-[hero-fly-up_1000ms_ease_forwards] opacity-0 brightness-75 xs:min-h-[50vh] md:h-[40rem] md:max-h-full 2xl:h-[48rem]"
         src="/images/h.g.webp"
         :alt="websiteTitle"
-      >
+      />
     </div>
   </section>
 </template>
