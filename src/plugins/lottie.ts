@@ -1,17 +1,26 @@
 import type { AnimationItem } from 'lottie-web'
 
-type LottieEl = HTMLElement & { _lottie?: AnimationItem }
+type LottieEl = HTMLElement & {
+  _lottie?: AnimationItem,
+}
+
+type LottieBindingValue = {
+  name: string,
+  autoplay?: boolean,
+  loop?: boolean,
+}
 
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.directive<LottieEl, string>('lottie', {
+  nuxtApp.vueApp.directive<LottieEl, LottieBindingValue>('lottie', {
     async mounted (el, binding) {
-      const lottie = (await import('lottie-web')).default
+      const { default: lottie } = await import('lottie-web')
+
       el._lottie = lottie.loadAnimation({
         container: el,
         renderer: 'svg',
-        loop: true,
-        autoplay: true,
-        path: `/lottiefiles/${binding.value}.json`,
+        loop: binding.value.loop ?? true,
+        autoplay: binding.value.autoplay ?? true,
+        path: `/lottiefiles/${binding.value.name}.json`,
       })
     },
     beforeUnmount (el) {
