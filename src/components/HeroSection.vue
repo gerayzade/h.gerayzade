@@ -26,7 +26,7 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
 </script>
 
 <template>
-  <section class="hero-section relative flex h-screen min-h-[40.4rem] w-full flex-col p-16 text-center text-white md:pl-[34rem]">
+  <section class="hero-section relative flex min-h-[40.4rem] w-full flex-col p-16 text-center text-white md:pl-[34rem]">
     <SocialLinks v-show="isSectionMounted" />
     <h1 class="relative -translate-y-2.5 animate-[hero-fly-down_1000ms_ease_forwards] self-center text-4xl font-extrabold opacity-0 md:mt-auto md:text-6xl">
       <span
@@ -75,6 +75,14 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
 </template>
 
 <style lang="scss">
+.hero-section {
+  @apply h-screen;
+
+  @supports (height: 100dvh) {
+    @apply h-dvh;
+  }
+}
+
 @keyframes hero-fly-down {
   from { opacity: 0; transform: translateY(-10px); }
   to   { opacity: 1; transform: translateY(0); }
