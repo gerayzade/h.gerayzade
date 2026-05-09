@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { websiteTitle } from '@/utils/constants'
 
-const { $gsap } = useNuxtApp()
-
-const heroSectionRef = useTemplateRef('heroSection')
-
 const isRevealing = defineModel<boolean>('isRevealing', { default: false })
 const isRevealed = defineModel<boolean>('isRevealed', { default: false })
 
@@ -12,22 +8,6 @@ onMounted(async () => {
   isRevealing.value = true
   await sleep(2250)
   isRevealed.value = true
-
-  if (!heroSectionRef.value) {
-    return
-  }
-
-  $gsap.to(heroSectionRef.value, {
-    scrollTrigger: {
-      trigger: heroSectionRef.value,
-      start: 'top top',
-      end: 'center top',
-      scrub: true,
-      toggleActions: 'restart none none reverse',
-    },
-    opacity: 0,
-    duration: 1,
-  })
 })
 
 const { html: greetingHtml } = useTypewriter(`
@@ -45,10 +25,7 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
 </script>
 
 <template>
-  <section
-    ref="heroSection"
-    class="hero-section fullscreen relative flex min-h-[40.4rem] w-full flex-col overflow-hidden p-16 text-center text-white md:pl-[34rem]"
-  >
+  <section class="hero-section fullscreen relative flex min-h-[40.4rem] w-full flex-col overflow-hidden p-16 text-center text-white md:pl-[34rem]">
     <h1 class="relative -translate-y-2.5 animate-[hero-fly-down_1000ms_ease_forwards] self-center text-4xl font-extrabold opacity-0 md:mt-auto md:text-6xl">
       <span
         class="transition-colors delay-1000 duration-300"
