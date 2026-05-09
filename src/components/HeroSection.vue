@@ -29,7 +29,7 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
     <h1 class="relative -translate-y-2.5 animate-[hero-fly-down_1000ms_ease_forwards] self-center text-4xl font-extrabold opacity-0 md:mt-auto md:text-6xl">
       <span
         class="transition-colors delay-1000 duration-300"
-        :class="{ 'text-gray-800': isRevealing }"
+        :class="{ 'text-neutral-950': isRevealing }"
       >
         {{ websiteTitle.slice(0, 3) }}
       </span>
@@ -37,7 +37,7 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
         {{ websiteTitle.slice(3) }}
       </span>
       <span
-        class="hero-circle absolute left-[-0.15em] top-[0.585em] -z-10 h-[1.9em] w-[1.9em] -translate-y-1/2 scale-0 rounded-full bg-emerald-600 opacity-0"
+        class="hero-circle absolute left-[-0.15em] top-[0.585em] -z-10 h-[1.9em] w-[1.9em] -translate-y-1/2 scale-0 rounded-full bg-indigo-600 opacity-0"
         :class="{ 'animate-[hero-circle-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_1000ms_forwards]': isRevealing }"
       />
     </h1>
@@ -59,10 +59,7 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
       v-html="scrollToStartHtml"
     />
     <!-- eslint-enable vue/no-v-html -->
-    <div
-      class="absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 flex-col justify-end [transition:filter_300ms_ease_1000ms] md:left-0 md:translate-x-0 lg:left-20"
-      :class="{ 'drop-shadow-emerald': isRevealing }"
-    >
+    <div class="hero-image absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 flex-col justify-end md:left-0 md:translate-x-0 lg:left-20">
       <img
         class="h-80 w-auto max-w-none translate-y-5 animate-[hero-fly-up_1000ms_ease_forwards] opacity-0 brightness-75 xs:min-h-[50vh] md:h-[40rem] md:max-h-full 2xl:h-[48rem]"
         :alt="websiteTitle"

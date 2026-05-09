@@ -1,4 +1,4 @@
-import { Breakpoint } from './src/entities/theme/breakpoint'
+import { breakpoints } from './src/entities/theme/breakpoint'
 import {
   websiteDescription,
   websiteTitle,
@@ -40,19 +40,19 @@ export default defineNuxtConfig({
         { charset: 'utf-8' },
         { 'http-equiv': 'x-ua-compatible', 'content': 'ie=edge' },
         { name: 'viewport', content: 'width=device-width' },
-        { name: 'theme-color', content: '#1F2937' },
+        { name: 'theme-color', content: '#0A0A0A' },
         { name: 'description', content: websiteDescription },
         { name: 'apple-mobile-web-app-title', content: websiteTitle },
-        { name: 'apple-mobile-web-app-status-bar-style', content: '#1F2937' },
+        { name: 'apple-mobile-web-app-status-bar-style', content: '#0A0A0A' },
         { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'msapplication-config', content: '/browserconfig.xml' },
-        { name: 'msapplication-TileColor', content: '#1F2937' },
+        { name: 'msapplication-TileColor', content: '#0A0A0A' },
         { name: 'msapplication-TileImage', content: '/mstile-150x150.png' },
       ],
       link: [
         { rel: 'icon', type: 'image/png', sizes: '96x96', href: '/favicon-96x96.png' },
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
-        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#1F2937' },
+        { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#0A0A0A' },
         { rel: 'preload', as: 'image', href: '/images/h.g.webp' },
         { rel: 'manifest', href: '/site.webmanifest' },
       ],
@@ -63,12 +63,7 @@ export default defineNuxtConfig({
     '@/styles/main.scss',
   ],
   image: {
-    // The screen sizes predefined by `@nuxt/image`:
-    screens: Object.keys(Breakpoint)
-      .reduce((acc, mq) => {
-        acc[mq] = Breakpoint[mq as keyof typeof Breakpoint]
-        return acc
-      }, {} as Record<string, number>),
+    screens: breakpoints.numericMapping,
   },
   imports: {
     // Auto-import composables, stores and utils

@@ -3,21 +3,22 @@
 
 <template>
   <section class="who-am-i-section fullscreen relative min-h-max w-full overflow-hidden">
+    <div class="min-h-[max(100%,25rem)] w-full pb-[65.625%]" />
     <img
-      class="min-h-[max(100%,25rem)] w-full object-cover object-center opacity-20"
-      src="/images/baku.webp"
+      class="who-am-i-image absolute inset-0 size-full object-cover object-center opacity-20"
+      :src="'/images/baku.webp'"
       alt="Baku"
     >
-    <div class="absolute inset-0 flex items-center justify-center p-16">
-      <p class="relative z-10 max-w-screen-xs text-balance font-medium leading-normal tracking-tighter xs:text-2xl">
+    <div class="absolute inset-0 z-10 flex items-center justify-center p-16">
+      <p class="max-w-screen-xs text-balance font-medium leading-normal tracking-tighter xs:text-2xl">
         <span class="mr-4 text-sm font-black text-white">
           Who am I
-          <span class="text-emerald-600">
+          <span class="text-indigo-600">
             .
           </span>
         </span>
         <mark
-          v-mark="'bg-gray-800'"
+          v-mark="'bg-neutral-950'"
           class="bg-transparent leading-normal text-white"
         >
           Based in Baku, focused on building scalable web applications with JavaScript frameworks

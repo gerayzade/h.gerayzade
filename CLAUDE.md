@@ -41,4 +41,4 @@ There are no test or lint scripts.
 Custom breakpoints in `tailwind.config.ts` extend the default scale:
 `2xs: 360`, `xs: 640`, then `sm/md/lg/xl/2xl` ending at `1920`. Use these named breakpoints rather than arbitrary values when adding responsive styles.
 
-A custom `dropShadow.emerald` utility renders 4-corner emerald-600 offsets — used for the hero image glow.
+A custom `dropShadow.indigo` utility renders 4-corner indigo-600 offsets — used for the hero image glow.

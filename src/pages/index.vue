@@ -3,21 +3,33 @@ import HeroSection from '@/components/HeroSection.vue'
 import SocialLinks from '@/components/SocialLinks.vue'
 import WhoAmISection from '@/components/WhoAmISection.vue'
 
-const { $gsap } = useNuxtApp()
+const { $gsap, $ScrollTrigger } = useNuxtApp()
 
 const isHeroSectionRevealing = ref(false)
 const isHeroSectionRevealed = ref(false)
 
+const indexPageRef = useTemplateRef('indexPage')
 const heroSectionRef = useTemplateRef('heroSection')
 const whoAmISectionRef = useTemplateRef('whoAmISection')
 
 onMounted(() => {
+  const indexPageEl = indexPageRef.value
   const heroSectionEl = heroSectionRef.value?.$el
   const whoAmISectionEl = whoAmISectionRef.value?.$el
 
-  if (!heroSectionEl || !whoAmISectionEl) {
+  if (!indexPageEl || !heroSectionEl || !whoAmISectionEl) {
     return
   }
+
+  const heroImageEl = heroSectionEl.querySelector('.hero-image')
+  const whoAmIImageEl = whoAmISectionEl.querySelector('.who-am-i-image')
+
+  $ScrollTrigger.create({
+    trigger: indexPageEl,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: heroImageEl,
+  })
 
   const tl = $gsap.timeline({
     defaults: {
@@ -34,11 +46,15 @@ onMounted(() => {
 
   tl.to(heroSectionEl, { opacity: 0 }, 0)
   tl.from(whoAmISectionEl, { opacity: 0 }, 0)
+  tl.from(whoAmIImageEl, { y: 400 }, 1)
 })
 </script>
 
 <template>
-  <div class="index-page">
+  <div
+    ref="indexPage"
+    class="index-page"
+  >
     <div v-if="isHeroSectionRevealing">
       <SocialLinks />
     </div>

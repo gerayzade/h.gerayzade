@@ -9,3 +9,14 @@ export enum Breakpoint {
   'xl' = 1440,
   '2xl' = 1920,
 }
+
+export const breakpoints = Object.keys(Breakpoint)
+  .filter(key => isNaN(Number(key)))
+  .reduce((acc, mq) => {
+    acc.numericMapping[mq] = Breakpoint[mq as keyof typeof Breakpoint]
+    acc.stringMapping[mq] = `${acc.numericMapping[mq]}px`
+    return acc
+  }, {
+    numericMapping: {} as Record<string, number>,
+    stringMapping: {} as Record<string, string>,
+  })
