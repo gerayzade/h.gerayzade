@@ -46,7 +46,7 @@ onMounted(() => {
 
   tl.to(heroSectionEl, { opacity: 0 }, 0)
   tl.from(whoAmISectionEl, { opacity: 0 }, 0)
-  tl.from(whoAmIImageEl, { y: 400 }, 1)
+  tl.from(whoAmIImageEl, { y: 400, ease: 'none' }, 1)
 })
 </script>
 
