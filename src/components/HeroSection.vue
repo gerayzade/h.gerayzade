@@ -47,11 +47,11 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
 <template>
   <section
     ref="heroSection"
-    class="hero-section relative flex min-h-[40.4rem] w-full flex-col overflow-hidden p-16 text-center text-white md:pl-[34rem]"
+    class="hero-section fullscreen relative flex min-h-[40.4rem] w-full flex-col overflow-hidden p-16 text-center text-white md:pl-[34rem]"
   >
     <h1 class="relative -translate-y-2.5 animate-[hero-fly-down_1000ms_ease_forwards] self-center text-4xl font-extrabold opacity-0 md:mt-auto md:text-6xl">
       <span
-        class="ml-[0.05em] transition-colors delay-1000 duration-300"
+        class="transition-colors delay-1000 duration-300"
         :class="{ 'text-gray-800': isRevealing }"
       >
         {{ websiteTitle.slice(0, 3) }}
@@ -60,13 +60,13 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
         {{ websiteTitle.slice(3) }}
       </span>
       <span
-        class="absolute left-[-0.2em] top-1/2 -z-10 h-[1.9em] w-[1.9em] -translate-y-1/2 scale-0 rounded-full bg-emerald-600 opacity-0"
+        class="hero-circle absolute left-[-0.15em] top-[0.585em] -z-10 h-[1.9em] w-[1.9em] -translate-y-1/2 scale-0 rounded-full bg-emerald-600 opacity-0"
         :class="{ 'animate-[hero-circle-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_1000ms_forwards]': isRevealing }"
       />
     </h1>
     <!-- eslint-disable vue/no-v-html -->
     <p
-      class="mx-auto mt-14 w-72 max-w-full font-medium md:mb-auto md:mt-16 md:w-96"
+      class="mx-auto mt-14 w-72 max-w-full font-medium tracking-tighter md:mb-auto md:mt-16 md:w-96"
       v-html="greetingHtml"
     />
     <div
@@ -78,7 +78,7 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
       class="mx-auto mt-6 size-12"
     />
     <div
-      class="mb-8 mt-2 text-xs font-medium"
+      class="mb-8 mt-2 text-xs font-medium tracking-tighter"
       v-html="scrollToStartHtml"
     />
     <!-- eslint-enable vue/no-v-html -->
@@ -96,14 +96,6 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
 </template>
 
 <style lang="scss">
-.hero-section {
-  @apply h-screen;
-
-  @supports (height: 100dvh) {
-    @apply h-dvh;
-  }
-}
-
 @keyframes hero-fly-down {
   from { opacity: 0; transform: translateY(-10px); }
   to   { opacity: 1; transform: translateY(0); }

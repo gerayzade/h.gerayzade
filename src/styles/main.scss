@@ -4,13 +4,21 @@
 
 @use './tailwind';
 @use './globals';
+@use './fonts';
 
 body {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 400;
   font-optical-sizing: auto;
   /* For better font rendering on web */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+}
+
+::selection {
+  @apply bg-gray-600 text-white;
 }
 
 // App
@@ -24,6 +32,16 @@ body,
 
 .break-words {
   word-break: break-word;
+}
+
+// Sizing
+
+.fullscreen {
+  @apply h-screen;
+
+  @supports (height: 100dvh) {
+    @apply h-dvh;
+  }
 }
 
 // Position
