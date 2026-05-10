@@ -3,7 +3,7 @@ import HeroSection from '@/components/HeroSection.vue'
 import SocialLinks from '@/components/SocialLinks.vue'
 import WhoAmISection from '@/components/WhoAmISection.vue'
 
-const { $gsap, $ScrollTrigger } = useNuxtApp()
+const { $gsap } = useNuxtApp()
 
 const isHeroSectionRevealing = ref(false)
 const isHeroSectionRevealed = ref(false)
@@ -40,18 +40,11 @@ onMounted(() => {
   })
 
   tl.to(heroSectionEl, { opacity: 0 }, 0)
+  tl.to(heroImageEl, { yPercent: 50, ease: 'none' }, 0)
   tl.to(scrollDownHintEl, { yPercent: 100, ease: 'none' }, 0)
   tl.from(whoAmISectionEl, { opacity: 0 }, 0)
-  tl.from(whoAmIImageEl, { yPercent: 50, ease: 'none' }, 0)
+  tl.from(whoAmIImageEl, { yPercent: -50, ease: 'none' }, 0)
   tl.from(whoAmITextEl, { yPercent: 100, ease: 'none' }, 0)
-
-  $ScrollTrigger.create({
-    trigger: indexPageEl,
-    start: 'top top',
-    end: 'bottom bottom',
-    pin: heroImageEl,
-    pinSpacing: false,
-  })
 })
 </script>
 
