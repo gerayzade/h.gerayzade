@@ -17,11 +17,6 @@ const { html: greetingHtml } = useTypewriter(`
   delay: 1000,
   speed: 8,
 })
-
-const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
-  delay: 2250,
-  speed: 8,
-})
 </script>
 
 <template>
@@ -46,22 +41,28 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
       class="mx-auto mt-14 w-72 max-w-full font-medium tracking-tighter md:mb-auto md:mt-16 md:w-96"
       v-html="greetingHtml"
     />
-    <div
-      :key="`scroll-down/autoplay/${isRevealed}`"
-      v-lottie="{
-        name: 'scroll-down',
-        autoplay: isRevealed,
-      }"
-      class="mx-auto mt-6 size-12"
-    />
-    <div
-      class="mb-8 mt-2 text-xs font-medium tracking-tighter"
-      v-html="scrollToStartHtml"
-    />
     <!-- eslint-enable vue/no-v-html -->
+    <div class="scroll-down-hint">
+      <div
+        :key="`scroll-down/autoplay/${isRevealed}`"
+        v-lottie="{
+          name: 'scroll-down',
+          autoplay: isRevealed,
+        }"
+        class="mx-auto mt-6 size-12"
+      />
+      <div
+        :class="[
+          'mx-auto mb-8 mt-2 w-max animate-[scroll-to-start-pulse_2s_ease-in-out_infinite] whitespace-nowrap text-xs font-medium tracking-tighter',
+          { 'invisible': !isRevealed },
+        ]"
+      >
+        [scroll to start]
+      </div>
+    </div>
     <div class="hero-image absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 flex-col justify-end md:left-0 md:translate-x-0 lg:left-20">
       <img
-        class="h-80 w-auto max-w-none translate-y-5 animate-[hero-fly-up_1000ms_ease_forwards] opacity-0 brightness-75 xs:min-h-[50vh] md:h-[40rem] md:max-h-full 2xl:h-[48rem]"
+        class="h-80 w-auto max-w-none translate-y-5 animate-[hero-fly-up_6000ms_ease_forwards] opacity-0 brightness-75 xs:min-h-[50vh] md:h-[40rem] md:max-h-full 2xl:h-[48rem]"
         :alt="websiteTitle"
         src="/images/h.g.webp"
       >
@@ -85,5 +86,10 @@ const { html: scrollToStartHtml } = useTypewriter('[scroll to start]', {
   60%  { opacity: 1; transform: translateY(-50%) scale(1.15); }
   80%  { opacity: 1; transform: translateY(-50%) scale(0.92); }
   100% { opacity: 1; transform: translateY(-50%) scale(1); }
+}
+
+@keyframes scroll-to-start-pulse {
+  0%, 100% { opacity: 0; }
+  50%      { opacity: 1; }
 }
 </style>

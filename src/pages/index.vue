@@ -9,8 +9,8 @@ const isHeroSectionRevealing = ref(false)
 const isHeroSectionRevealed = ref(false)
 
 const indexPageRef = useTemplateRef('indexPage')
-const heroSectionRef = useTemplateRef('heroSection')
-const whoAmISectionRef = useTemplateRef('whoAmISection')
+const heroSectionRef = useTemplateRef<{ $el?: HTMLElement }>('heroSection')
+const whoAmISectionRef = useTemplateRef<{ $el?: HTMLElement }>('whoAmISection')
 
 onMounted(() => {
   const indexPageEl = indexPageRef.value
@@ -21,15 +21,10 @@ onMounted(() => {
     return
   }
 
-  const heroImageEl = heroSectionEl.querySelector('.hero-image')
-  const whoAmIImageEl = whoAmISectionEl.querySelector('.who-am-i-image')
-
-  $ScrollTrigger.create({
-    trigger: indexPageEl,
-    start: 'top top',
-    end: 'bottom bottom',
-    pin: heroImageEl,
-  })
+  const heroImageEl = heroSectionEl.querySelectorAll('.hero-image')
+  const scrollDownHintEl = heroSectionEl.querySelector('.scroll-down-hint')
+  const whoAmIImageEls = whoAmISectionEl.querySelectorAll('.who-am-i-image')
+  const whoAmITextEl = whoAmISectionEl.querySelector('.who-am-i-text')
 
   const tl = $gsap.timeline({
     defaults: {
@@ -45,8 +40,18 @@ onMounted(() => {
   })
 
   tl.to(heroSectionEl, { opacity: 0 }, 0)
+  tl.to(scrollDownHintEl, { yPercent: 100, ease: 'none' }, 0)
   tl.from(whoAmISectionEl, { opacity: 0 }, 0)
-  tl.from(whoAmIImageEl, { y: 400, ease: 'none' }, 1)
+  tl.from(whoAmIImageEls, { yPercent: 50, ease: 'none' }, 0)
+  tl.from(whoAmITextEl, { yPercent: 100, ease: 'none' }, 0)
+
+  $ScrollTrigger.create({
+    trigger: indexPageEl,
+    start: 'top top',
+    end: 'bottom bottom',
+    pin: heroImageEl,
+    pinSpacing: false,
+  })
 })
 </script>
 
