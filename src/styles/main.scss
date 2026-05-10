@@ -39,6 +39,7 @@ body {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior: none;
+  touch-action: pan-y;
 }
 
 // Typography
