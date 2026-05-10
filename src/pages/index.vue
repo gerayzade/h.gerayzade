@@ -21,9 +21,9 @@ onMounted(() => {
     return
   }
 
-  const heroImageEl = heroSectionEl.querySelectorAll('.hero-image')
+  const heroImageEl = heroSectionEl.querySelector('.hero-image')
   const scrollDownHintEl = heroSectionEl.querySelector('.scroll-down-hint')
-  const whoAmIImageEls = whoAmISectionEl.querySelectorAll('.who-am-i-image')
+  const whoAmIImageEl = whoAmISectionEl.querySelector('.who-am-i-image')
   const whoAmITextEl = whoAmISectionEl.querySelector('.who-am-i-text')
 
   const tl = $gsap.timeline({
@@ -42,7 +42,7 @@ onMounted(() => {
   tl.to(heroSectionEl, { opacity: 0 }, 0)
   tl.to(scrollDownHintEl, { yPercent: 100, ease: 'none' }, 0)
   tl.from(whoAmISectionEl, { opacity: 0 }, 0)
-  tl.from(whoAmIImageEls, { yPercent: 50, ease: 'none' }, 0)
+  tl.from(whoAmIImageEl, { yPercent: 50, ease: 'none' }, 0)
   tl.from(whoAmITextEl, { yPercent: 100, ease: 'none' }, 0)
 
   $ScrollTrigger.create({
