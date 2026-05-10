@@ -4,7 +4,7 @@
 <template>
   <section class="who-am-i-section fullscreen relative min-h-max w-full overflow-hidden">
     <img
-      class="who-am-i-image absolute inset-0 size-full min-h-[max(100%,25rem)] object-cover object-left opacity-20"
+      class="who-am-i-image absolute inset-0 size-full min-h-[max(100%,25rem)] object-cover object-left opacity-50 brightness-50 grayscale"
       :src="'/images/baku.webp'"
       alt="Içeri Şeher"
     >
