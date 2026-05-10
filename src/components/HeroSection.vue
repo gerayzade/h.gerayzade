@@ -53,8 +53,8 @@ const { html: greetingHtml } = useTypewriter(`
       />
       <div
         :class="[
-          'mx-auto mb-8 mt-2 w-max animate-[scroll-to-start-pulse_2s_ease-in-out_infinite] whitespace-nowrap text-xs font-medium tracking-tighter',
-          { 'invisible': !isRevealed },
+          'mx-auto mb-8 mt-2 w-max whitespace-nowrap text-xs font-medium tracking-tighter transition-opacity',
+          { 'opacity-0': !isRevealed },
         ]"
       >
         [scroll to start]
@@ -86,10 +86,5 @@ const { html: greetingHtml } = useTypewriter(`
   60%  { opacity: 1; transform: translateY(-50%) scale(1.15); }
   80%  { opacity: 1; transform: translateY(-50%) scale(0.92); }
   100% { opacity: 1; transform: translateY(-50%) scale(1); }
-}
-
-@keyframes scroll-to-start-pulse {
-  0%, 100% { opacity: 0; }
-  50%      { opacity: 1; }
 }
 </style>
