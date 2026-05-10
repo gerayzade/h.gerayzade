@@ -8,7 +8,7 @@ import socials from '@/data/socials'
       <a
         v-for="(social, index) in socials"
         :key="social.name"
-        class="scale-0 animate-[social-link-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_forwards] p-3 text-white opacity-0 transition-colors duration-150 hover:text-emerald-600 [&_svg]:size-6"
+        class="scale-0 animate-[social-link-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_forwards] p-3 text-white opacity-0 transition-colors duration-150 hover:text-indigo-600 [&_svg]:size-6"
         :href="social.href"
         target="_blank"
         rel="noopener"
