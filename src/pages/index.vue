@@ -9,15 +9,17 @@ const isHeroSectionRevealing = ref(false)
 const isHeroSectionRevealed = ref(false)
 
 const indexPageRef = useTemplateRef('indexPage')
+const socialLinksRef = useTemplateRef<{ $el?: HTMLElement }>('socialLinks')
 const heroSectionRef = useTemplateRef<{ $el?: HTMLElement }>('heroSection')
 const whoAmISectionRef = useTemplateRef<{ $el?: HTMLElement }>('whoAmISection')
 
 onMounted(() => {
   const indexPageEl = indexPageRef.value
+  const socialLinksEl = socialLinksRef.value?.$el
   const heroSectionEl = heroSectionRef.value?.$el
   const whoAmISectionEl = whoAmISectionRef.value?.$el
 
-  if (!indexPageEl || !heroSectionEl || !whoAmISectionEl) {
+  if (!indexPageEl || !socialLinksEl || !heroSectionEl || !whoAmISectionEl) {
     return
   }
 
@@ -39,6 +41,7 @@ onMounted(() => {
     },
   })
 
+  tl.to(socialLinksEl, { bottom: 'auto' }, 0)
   tl.to(heroSectionEl, { opacity: 0 }, 0)
   tl.to(heroImageEl, { bottom: '-33%' }, 0)
   tl.to(scrollDownHintEl, { yPercent: 100, ease: 'none' }, 0)
@@ -53,8 +56,8 @@ onMounted(() => {
     ref="indexPage"
     class="index-page"
   >
-    <div v-if="isHeroSectionRevealing">
-      <SocialLinks />
+    <div v-show="isHeroSectionRevealing">
+      <SocialLinks ref="socialLinks" />
     </div>
     <HeroSection
       ref="heroSection"

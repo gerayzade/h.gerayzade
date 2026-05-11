@@ -3,8 +3,8 @@ import socials from '@/data/socials'
 </script>
 
 <template>
-  <div class="social-links fixed right-0 top-0 z-50 flex items-center max-md:bottom-0 sm:right-4 md:top-4">
-    <div class="flex flex-col items-center">
+  <div class="social-links fixed inset-y-0 right-0 z-50 flex items-center">
+    <div class="flex flex-col items-center pt-4 sm:pr-4">
       <a
         v-for="(social, index) in socials"
         :key="social.name"
