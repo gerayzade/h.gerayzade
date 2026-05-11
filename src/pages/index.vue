@@ -40,7 +40,7 @@ onMounted(() => {
   })
 
   tl.to(heroSectionEl, { opacity: 0 }, 0)
-  tl.to(heroImageEl, { yPercent: 50, ease: 'none' }, 0)
+  tl.to(heroImageEl, { bottom: '-33%' }, 0)
   tl.to(scrollDownHintEl, { yPercent: 100, ease: 'none' }, 0)
   tl.from(whoAmISectionEl, { opacity: 0 }, 0)
   tl.from(whoAmIImageEl, { yPercent: -25, ease: 'none' }, 0)
