@@ -11,8 +11,8 @@ onMounted(async () => {
 })
 
 const { html: greetingHtml } = useTypewriter(`
-  Hi there, I'm Heydar — a front-end developer with
-  over 10 years of hands-on experience in tech!
+  Hey there, I'm Heydar — a front-end developer
+  with over 10 years of hands-on experience in tech!
 `, {
   delay: 1000,
   speed: 8,
@@ -38,7 +38,7 @@ const { html: greetingHtml } = useTypewriter(`
     </h1>
     <!-- eslint-disable vue/no-v-html -->
     <p
-      class="mx-auto mb-2 mt-14 w-96 max-w-full text-balance font-medium tracking-tighter md:mb-auto md:mt-16"
+      class="mx-auto mt-14 w-[20.5rem] max-w-full font-medium tracking-tighter xs:mb-2 md:mb-auto md:mt-16"
       v-html="greetingHtml"
     />
     <!-- eslint-enable vue/no-v-html -->
