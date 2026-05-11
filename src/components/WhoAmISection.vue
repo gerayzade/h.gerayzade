@@ -2,9 +2,9 @@
 </script>
 
 <template>
-  <section class="who-am-i-section fullscreen relative min-h-max w-full overflow-hidden">
+  <section class="who-am-i-section fullscreen relative min-h-[max(100%,28rem)] w-full overflow-hidden">
     <img
-      class="who-am-i-image absolute inset-0 size-full min-h-[max(100%,25rem)] object-cover object-left opacity-50 brightness-50 grayscale"
+      class="who-am-i-image absolute inset-0 size-full object-cover object-left opacity-50 brightness-50 grayscale"
       :src="'/images/baku.webp'"
       alt="Içeri Şeher"
     >
