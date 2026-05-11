@@ -38,7 +38,7 @@ const { html: greetingHtml } = useTypewriter(`
     </h1>
     <!-- eslint-disable vue/no-v-html -->
     <p
-      class="mx-auto mt-14 w-72 max-w-full font-medium tracking-tighter md:mb-auto md:mt-16 md:w-96"
+      class="mx-auto mb-2 mt-14 w-96 max-w-full text-balance font-medium tracking-tighter md:mb-auto md:mt-16"
       v-html="greetingHtml"
     />
     <!-- eslint-enable vue/no-v-html -->
