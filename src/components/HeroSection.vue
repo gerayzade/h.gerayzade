@@ -60,7 +60,7 @@ const { html: greetingHtml } = useTypewriter(`
         [scroll to start]
       </div>
     </div>
-    <div class="hero-image absolute bottom-0 left-1/2 -z-10 -translate-x-1/2 flex-col justify-end md:left-0 md:translate-x-0 lg:left-20">
+    <div class="hero-image absolute bottom-0 left-1/2 -translate-x-1/2 flex-col justify-end md:left-0 md:translate-x-0 lg:left-20">
       <img
         class="h-80 w-auto max-w-none translate-y-5 animate-[hero-fly-up_6000ms_ease_forwards] opacity-0 brightness-75 xs:min-h-[50vh] md:h-[40rem] md:max-h-full 2xl:h-[48rem]"
         :alt="websiteTitle"
