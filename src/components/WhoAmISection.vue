@@ -11,14 +11,11 @@
     <div class="who-am-i-text absolute inset-0 z-10 flex items-end justify-center p-16 max-xs:pl-4">
       <p class="max-w-screen-sm text-balance font-medium leading-normal tracking-tighter xs:text-2xl">
         <span class="mr-4 text-sm font-black text-white">
-          Who am I
-          <span class="text-indigo-600">
-            .
-          </span>
+          Who am I.
         </span>
         <mark
           v-mark="'bg-indigo-600'"
-          class="bg-transparent leading-normal text-neutral-950"
+          class="bg-transparent leading-normal text-white"
         >
           Based in Baku, focused on building scalable web applications with
           JavaScript frameworks and libraries. Currently I work primarily with Vue.js,
