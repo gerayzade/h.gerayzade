@@ -135,8 +135,7 @@ const skillGroups = [
 
       <div class="mt-auto p-4">
         <a
-          href="/resume/HG-04-05-2025.pdf"
-          download="h.gerayzade.resume.pdf"
+          href="/resume/h.gerayzade.resume.pdf"
           class="group relative inline-flex h-10 items-center gap-2 rounded-full pl-2.5 text-neutral-200 transition-[padding] hover:px-3"
         >
           <div class="absolute left-0 top-0 size-10 rounded-full bg-indigo-600 transition-[width] group-hover:w-[calc(100%+2px)]" />

@@ -90,6 +90,14 @@ export default defineNuxtConfig({
       routes: ['/'],
     },
   },
+  routeRules: {
+    '/resume/h.gerayzade.resume.pdf': {
+      headers: {
+        'Content-Disposition': 'attachment',
+        'Content-Type': 'application/pdf',
+      },
+    },
+  },
   vite: {
     build: {
       chunkSizeWarningLimit: 5000,
