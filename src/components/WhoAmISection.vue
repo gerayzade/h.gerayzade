@@ -9,12 +9,12 @@
       alt="Içeri Şeher"
     >
     <div class="who-am-i-text absolute inset-0 z-10 flex items-end justify-center p-16 max-xs:pl-4">
-      <p class="max-w-screen-sm text-balance font-medium leading-normal tracking-tighter xs:text-2xl">
-        <span class="relative ml-px mr-1 bg-indigo-600 p-0.5 text-xs font-black text-white xs:bottom-0.5 xs:mr-2 xs:p-1 xs:text-sm">
+      <p class="max-w-screen-sm text-balance font-medium leading-normal tracking-tighter xs:text-xl">
+        <span class="-mb-0.5 mr-1 rounded-md px-1 pb-0.5 font-black text-white">
           Who am I.
         </span>
         <mark
-          v-mark="'bg-white'"
+          v-mark="'-mx-px -mb-0.5 rounded-md px-1 pb-0.5 bg-white'"
           class="bg-transparent leading-normal text-neutral-950"
         >
           Based in Baku, focused on building scalable web applications with

@@ -67,7 +67,7 @@ export default defineNuxtConfig({
       'composables/**',
       'stores',
       'stores/**',
-      'utils',
+      'utils/promises',
     ],
   },
   pwa: {

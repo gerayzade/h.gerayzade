@@ -1,11 +1,11 @@
-const MARKED_TEXT_CLASSLIST = 'pl-[0.1158em] pr-[0.1158em] pb-[0.1em] -ml-[0.1158em] -mr-[0.1158em] -mb-[0.1em]'
+import { cn } from '@/utils/classnames'
+
+const MARKED_TEXT_CLASSLIST = 'px-[0.2em] pb-[0.1em] -mx-[0.05em] -mb-[0.1em]'
 
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.vueApp.directive<HTMLElement, string | undefined>('mark', {
     mounted (el, binding) {
-      const className = [MARKED_TEXT_CLASSLIST, binding.value ?? '']
-        .join(' ')
-        .trim()
+      const className = cn(MARKED_TEXT_CLASSLIST, binding.value ?? '')
       const words = (el.textContent ?? '')
         .trim()
         .split(/\s+/)
