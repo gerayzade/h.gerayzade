@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { Tech, techIcons, techTitles } from '@/entities/tech'
+import DownloadIcon from '@/components/icons/DownloadIcon.vue'
 
 const skillGroups = [
   {
@@ -87,9 +88,9 @@ const skillGroups = [
 <template>
   <section
     ref="section"
-    class="skills-section fullscreen relative flex min-h-max w-full items-center bg-neutral-950 py-14"
+    class="skills-section fullscreen relative flex min-h-max w-full items-center bg-neutral-950 pb-12 pt-24"
   >
-    <div class="skills-title absolute left-0 top-0 z-10 p-4 text-4xl font-bold uppercase tracking-tighter text-indigo-600 xs:left-10 xs:top-10">
+    <div class="skills-title absolute left-10 top-10 z-10 p-4 text-4xl font-bold uppercase tracking-tighter text-indigo-600">
       Skills
     </div>
     <div class="relative z-10 mx-auto flex w-full max-w-screen-2xl flex-col gap-10 py-6 tracking-tighter">
@@ -123,12 +124,30 @@ const skillGroups = [
                   :is="techIcons[skill]"
                   v-if="techIcons[skill]"
                   class="h-5 w-auto shrink-0"
+                  aria-hidden="true"
                 />
                 {{ techTitles[skill] }}
               </li>
             </template>
           </ul>
         </div>
+      </div>
+
+      <div class="mt-auto p-4">
+        <a
+          href="/resume/HG-04-05-2025.pdf"
+          download="h.gerayzade.resume.pdf"
+          class="group relative inline-flex h-10 items-center gap-2 rounded-full pl-2.5 text-neutral-200 transition-[padding] hover:px-3"
+        >
+          <div class="absolute left-0 top-0 size-10 rounded-full bg-indigo-600 transition-[width] group-hover:w-[calc(100%+2px)]" />
+          <DownloadIcon
+            aria-hidden="true"
+            class="relative h-5 w-auto shrink-0"
+          />
+          <span class="relative pl-2 font-medium transition-[padding] group-hover:pl-0">
+            Download Resume
+          </span>
+        </a>
       </div>
     </div>
   </section>

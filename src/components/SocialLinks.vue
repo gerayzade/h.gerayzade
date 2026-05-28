@@ -15,7 +15,10 @@ import socials from '@/data/socials'
         rel="noopener"
         :style="{ animationDelay: `${1000 + 150 * index}ms` }"
       >
-        <component :is="social.icon" />
+        <component
+          :is="social.icon"
+          aria-hidden="true"
+        />
       </a>
     </div>
   </div>
