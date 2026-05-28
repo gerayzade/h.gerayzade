@@ -1,10 +1,86 @@
 <script lang="ts" setup>
-import techIcons from '@/data/tech-icons'
+import { Tech, techIcons, techTitles } from '@/entities/tech'
 
 const skillGroups = [
-  { label: 'JS Frameworks & Libraries', reverse: false, duration: 50, skills: ['TypeScript', 'Vue 3', 'Nuxt 4', 'Pinia', 'React', 'Next.js', 'jQuery', 'Jest', 'Vitest'] },
-  { label: 'Markup & UI', reverse: true, duration: 42, skills: ['HTML5', 'Pug', 'CSS3', 'SASS', 'Tailwind CSS', 'Bootstrap', 'Vuetify', 'ShadCn-Vue'] },
-  { label: 'Database, APIs & CMS', reverse: false, duration: 38, skills: ['MongoDB', 'Node.js', 'Express', 'Strapi', 'Contentful', 'Webflow', 'WordPress'] },
+  {
+    label: 'JS Ecosystem',
+    reverse: false,
+    duration: 130,
+    skills: [
+      Tech.JAVASCRIPT,
+      Tech.TYPESCRIPT,
+      Tech.VUE,
+      Tech.NUXT,
+      Tech.PINIA,
+      Tech.REACT,
+      Tech.NEXT_JS,
+      Tech.REDUX,
+      Tech.JQUERY,
+      Tech.GSAP,
+      Tech.JEST,
+      Tech.VITEST,
+      Tech.NODE_JS,
+      Tech.EXPRESS,
+      Tech.SWAGGER,
+      Tech.POSTMAN,
+      Tech.MONGODB,
+      Tech.MONGOOSE_JS,
+      Tech.JSON,
+      Tech.WEBPACK,
+      Tech.VITE_JS,
+      Tech.ROLLUP_JS,
+      Tech.GULP_JS,
+      Tech.NPM,
+      Tech.YARN,
+      Tech.ESLINT,
+      Tech.NODEMON,
+    ],
+  },
+  {
+    label: 'Markup & UI',
+    reverse: true,
+    duration: 73,
+    skills: [
+      Tech.HTML5,
+      Tech.PUG,
+      Tech.XML,
+      Tech.DJANGO,
+      Tech.HANDLEBARS,
+      Tech.CSS3,
+      Tech.SASS,
+      Tech.TAILWIND_CSS,
+      Tech.BOOTSTRAP,
+      Tech.VUETIFY,
+      Tech.SHADCN_VUE,
+      Tech.FIGMA,
+      Tech.SKETCH,
+      Tech.ADOBE_XD,
+    ],
+  },
+  {
+    label: 'CMS, DevOps & Workflow',
+    reverse: false,
+    duration: 87,
+    skills: [
+      Tech.STRAPI,
+      Tech.CONTENTFUL,
+      Tech.WEBFLOW,
+      Tech.WORDPRESS,
+      Tech.FIREBASE,
+      Tech.GIT,
+      Tech.GITHUB,
+      Tech.GITLAB,
+      Tech.BITBUCKET,
+      Tech.DOCKER,
+      Tech.VERCEL,
+      Tech.DIGITAL_OCEAN,
+      Tech.BROWSER_STACK,
+      Tech.VS_CODE,
+      Tech.JIRA,
+      Tech.CONFLUENCE,
+      Tech.TRELLO,
+    ],
+  },
 ]
 </script>
 
@@ -34,7 +110,7 @@ const skillGroups = [
             :style="{ '--duration': `${group.duration}s` }"
           >
             <template
-              v-for="duplicate in 3"
+              v-for="duplicate in 2"
               :key="duplicate"
             >
               <li
@@ -48,7 +124,7 @@ const skillGroups = [
                   v-if="techIcons[skill]"
                   class="h-5 w-auto shrink-0"
                 />
-                {{ skill }}
+                {{ techTitles[skill] }}
               </li>
             </template>
           </ul>
@@ -100,7 +176,7 @@ const skillGroups = [
 
 @keyframes skills-marquee {
   to {
-    transform: translateX(calc((-100% - var(--gap)) / 3));
+    transform: translateX(calc((-100% - var(--gap)) / 2));
   }
 }
 </style>
