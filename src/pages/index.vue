@@ -84,14 +84,13 @@ onMounted(() => {
     .from(skillsTitleEl, { opacity: 0 }, 0)
     .from(skillGroupEls, { yPercent: 25, ease: 'none', stagger: 1 }, 1)
     .from(skillGroupEls, { opacity: 0, stagger: 1 }, 1)
-    .from(downloadResumeLinkEl, { opacity: 0 }, 2)
 
   // Skills / Download link reveal
   $gsap.timeline(scrubBetween(downloadResumeLinkEl, skillsSectionEl, {
     start: 'top bottom',
     end: 'bottom bottom',
   }))
-    .from(downloadResumeLinkEl, { opacity: 0 }, 2)
+    .from(downloadResumeLinkEl, { opacity: 0, scale: 0.75 }, 2)
 })
 </script>
 
