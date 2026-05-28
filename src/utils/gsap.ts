@@ -1,6 +1,6 @@
 export const scrubBetween = (
   trigger: Element | null,
-  endTrigger: Element | null,
+  endTrigger: Element | null = trigger,
   overrides: Partial<ScrollTrigger.Vars> = {},
 ) => ({
   defaults: {

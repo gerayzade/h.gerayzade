@@ -35,6 +35,7 @@ onMounted(() => {
   const whoAmITextEls = whoAmISectionEl.querySelectorAll('.who-am-i-text span')
   const skillsTitleEl = skillsSectionEl.querySelectorAll('.skills-title')
   const skillGroupEls = skillsSectionEl.querySelectorAll('.skill-group')
+  const downloadResumeLinkEl = skillsSectionEl.querySelector('.download-resume-link')
 
   // Hero -> Who Am I
   $gsap.timeline(scrubBetween(heroSectionEl, whoAmISectionEl))
@@ -81,8 +82,16 @@ onMounted(() => {
     })
     .to(socialLinksEl.querySelectorAll('svg'), { rotateZ: '-90deg' }, 0)
     .from(skillsTitleEl, { opacity: 0 }, 0)
-    .from(skillGroupEls, { yPercent: 25, ease: 'none', stagger: 1 }, 0)
-    .from(skillGroupEls, { opacity: 0, stagger: 1 }, 0)
+    .from(skillGroupEls, { yPercent: 25, ease: 'none', stagger: 1 }, 1)
+    .from(skillGroupEls, { opacity: 0, stagger: 1 }, 1)
+    .from(downloadResumeLinkEl, { opacity: 0 }, 2)
+
+  // Skills / Download link reveal
+  $gsap.timeline(scrubBetween(downloadResumeLinkEl, skillsSectionEl, {
+    start: 'top bottom',
+    end: 'bottom bottom',
+  }))
+    .from(downloadResumeLinkEl, { opacity: 0 }, 2)
 })
 </script>
 
