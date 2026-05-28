@@ -33,6 +33,7 @@ onMounted(() => {
   const whoAmIImageEl = whoAmISectionEl.querySelector('.who-am-i-image')
   const whoAmITextEl = whoAmISectionEl.querySelector('.who-am-i-text p')
   const whoAmITextEls = whoAmISectionEl.querySelectorAll('.who-am-i-text span')
+  const skillsTitleEl = skillsSectionEl.querySelectorAll('.skills-title')
   const skillGroupEls = skillsSectionEl.querySelectorAll('.skill-group')
 
   // Hero -> Who Am I
@@ -65,8 +66,23 @@ onMounted(() => {
   $gsap.timeline(scrubBetween(skillGroupEls[0] ?? null, skillsSectionEl, {
     start: 'center bottom',
   }))
-    .from(skillGroupEls, { opacity: 0, stagger: 1 }, 0)
+    .to(socialLinksEl, {
+      rotateZ: '90deg',
+      // Pivot on the GitHub icon's centre so it stays put while the rest swing into a row.
+      transformOrigin: () => {
+        const socialLinkEl = socialLinksEl.querySelector('a')!
+        const socialColumnEl = socialLinksEl.firstElementChild as HTMLElement
+
+        const x = socialLinkEl.offsetLeft - socialColumnEl.offsetLeft + socialLinkEl.offsetWidth / 2
+        const y = socialLinkEl.offsetTop - socialColumnEl.offsetTop + socialLinkEl.offsetHeight / 2
+
+        return `${x}px ${y}px`
+      },
+    })
+    .to(socialLinksEl.querySelectorAll('svg'), { rotateZ: '-90deg' }, 0)
+    .from(skillsTitleEl, { opacity: 0 }, 0)
     .from(skillGroupEls, { yPercent: 25, ease: 'none', stagger: 1 }, 0)
+    .from(skillGroupEls, { opacity: 0, stagger: 1 }, 0)
 })
 </script>
 
