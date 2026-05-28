@@ -76,6 +76,9 @@ export default defineNuxtConfig({
     manifest: false,
     workbox: {
       globPatterns: ['**/*.{js,css,html,ico,png,svg,webp,webmanifest}'],
+      // Don't let the navigation fallback hijack the resume PDF request and
+      // return the app shell (index.html) instead of the file.
+      navigateFallbackDenylist: [/^\/resume\//],
     },
     client: {
       installPrompt: false,
