@@ -95,7 +95,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    '/resume/h.gerayzade.resume.pdf': {
+    '/resume.h.gerayzade.pdf': {
       headers: {
         'Content-Disposition': 'attachment',
         'Content-Type': 'application/pdf',
