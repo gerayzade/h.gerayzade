@@ -5,7 +5,6 @@ const isRevealing = defineModel<boolean>('isRevealing', { default: false })
 const isRevealed = defineModel<boolean>('isRevealed', { default: false })
 
 onMounted(async () => {
-  await document.fonts.load('800 60px / 60px Satoshi')
   isRevealing.value = true
   await sleep(2250)
   isRevealed.value = true

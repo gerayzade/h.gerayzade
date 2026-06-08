@@ -52,7 +52,7 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
         { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#0A0A0A' },
         { rel: 'preload', as: 'image', href: '/images/h.g.webp' },
-        { rel: 'preload', as: 'font', href: '/fonts/Satoshi-Variable.woff2' },
+        { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/Satoshi-Variable.woff2', crossorigin: '' },
         { rel: 'manifest', href: '/site.webmanifest' },
       ],
     },
