@@ -6,6 +6,7 @@ import {
 const {
   DEV_CERT_PATH,
   DEV_CERT_KEY_PATH,
+  GA_MEASUREMENT_ID,
   NODE_ENV,
   PORT = 3000,
 } = import.meta.env
@@ -20,6 +21,9 @@ const httpsServerOptions = {
 const useDevServer = isDevelopment
   && httpsServerOptions.key
   && httpsServerOptions.cert
+
+const useGoogleAnalytics = !isDevelopment
+  && !!GA_MEASUREMENT_ID
 
 export default defineNuxtConfig({
   compatibilityDate: '2026-04-27',
@@ -54,6 +58,27 @@ export default defineNuxtConfig({
         { rel: 'preload', as: 'image', href: '/images/h.g.webp' },
         { rel: 'preload', as: 'font', type: 'font/woff2', href: '/fonts/Satoshi-Variable.woff2', crossorigin: '' },
         { rel: 'manifest', href: '/site.webmanifest' },
+      ],
+      script: [
+        // Google Analytics
+        ...(
+          useGoogleAnalytics
+            ? [
+              {
+                async: true,
+                src: `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`,
+              },
+              {
+                innerHTML: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_MEASUREMENT_ID}');
+                `,
+              },
+            ]
+            : []
+        ),
       ],
     },
   },
