@@ -1,10 +1,15 @@
 <script setup lang="ts">
 import colors from 'tailwindcss/colors'
+import { websiteUrl } from '@/utils/constants'
 import { scrubBetween } from '@/utils/gsap'
 import HeroSection from '@/components/HeroSection.vue'
 import SkillsSection from '@/components/SkillsSection.vue'
 import SocialLinks from '@/components/SocialLinks.vue'
 import WhoAmISection from '@/components/WhoAmISection.vue'
+
+useHead({
+  link: [{ rel: 'canonical', href: websiteUrl }],
+})
 
 const { $gsap } = useNuxtApp()
 
