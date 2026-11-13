@@ -41,6 +41,7 @@ import SassIcon from '@/components/icons/tech/SassIcon.vue'
 import ShadcnVueIcon from '@/components/icons/tech/ShadcnVueIcon.vue'
 import SketchIcon from '@/components/icons/tech/SketchIcon.vue'
 import StrapiIcon from '@/components/icons/tech/StrapiIcon.vue'
+import SupabaseIcon from '@/components/icons/tech/SupabaseIcon.vue'
 import SwaggerIcon from '@/components/icons/tech/SwaggerIcon.vue'
 import TailwindCssIcon from '@/components/icons/tech/TailwindCssIcon.vue'
 import TrelloIcon from '@/components/icons/tech/TrelloIcon.vue'
@@ -101,6 +102,7 @@ export enum Tech {
   SHADCN_VUE,
   SKETCH,
   STRAPI,
+  SUPABASE,
   SWAGGER,
   TAILWIND_CSS,
   TRELLO,
@@ -162,6 +164,7 @@ export const techTitles: Record<Tech, string> = {
   [Tech.SHADCN_VUE]: 'ShadCn-Vue',
   [Tech.SKETCH]: 'Sketch',
   [Tech.STRAPI]: 'Strapi',
+  [Tech.SUPABASE]: 'Supabase',
   [Tech.SWAGGER]: 'Swagger',
   [Tech.TAILWIND_CSS]: 'Tailwind CSS',
   [Tech.TRELLO]: 'Trello',
@@ -223,6 +226,7 @@ export const techIcons: Record<Tech, Component> = {
   [Tech.SHADCN_VUE]: ShadcnVueIcon,
   [Tech.SKETCH]: SketchIcon,
   [Tech.STRAPI]: StrapiIcon,
+  [Tech.SUPABASE]: SupabaseIcon,
   [Tech.SWAGGER]: SwaggerIcon,
   [Tech.TAILWIND_CSS]: TailwindCssIcon,
   [Tech.TRELLO]: TrelloIcon,

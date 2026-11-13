@@ -11,7 +11,7 @@ useHead({
   link: [{ rel: 'canonical', href: websiteUrl }],
 })
 
-const { $gsap } = useNuxtApp()
+const { $gsap, $ScrollTrigger } = useNuxtApp()
 
 const isHeroSectionRevealing = ref(false)
 const isHeroSectionRevealed = ref(false)
@@ -38,7 +38,8 @@ onMounted(() => {
   const whoAmIImageEl = whoAmISectionEl.querySelector('.who-am-i-image')
   const whoAmITextEl = whoAmISectionEl.querySelector('.who-am-i-text p')
   const whoAmITextEls = whoAmISectionEl.querySelectorAll('.who-am-i-text span')
-  const skillsTitleEl = skillsSectionEl.querySelectorAll('.skills-title')
+  const socialTileEls = socialLinksEl.querySelectorAll('.social-tile')
+  const skillsTitleEl = skillsSectionEl.querySelector('.skills-title')
   const skillGroupEls = skillsSectionEl.querySelectorAll('.skill-group')
   const downloadResumeLinkEl = skillsSectionEl.querySelector('.download-resume-link')
 
@@ -69,8 +70,8 @@ onMounted(() => {
     .from(skillsSectionEl, { opacity: 0 }, 0)
 
   // Skills / Groups reveal
-  $gsap.timeline(scrubBetween(skillGroupEls[0] ?? null, skillsSectionEl, {
-    start: 'center bottom',
+  $gsap.timeline(scrubBetween(skillsTitleEl, skillsSectionEl, {
+    start: 'top bottom',
   }))
     .to(socialLinksEl, {
       rotateZ: '90deg',
@@ -85,10 +86,27 @@ onMounted(() => {
         return `${x}px ${y}px`
       },
     })
-    .to(socialLinksEl.querySelectorAll('svg'), { rotateZ: '-90deg' }, 0)
+    .to(socialLinksEl.querySelectorAll('svg'), { rotateZ: '-90deg', scale: 0.85 }, 0)
+    // The bare icons pick up tiles as they land next to the section heading.
+    .to(socialTileEls, { borderColor: 'rgba(255, 255, 255, 0.14)', backgroundColor: colors.neutral[950] }, 0)
     .from(skillsTitleEl, { opacity: 0 }, 0)
     .from(skillGroupEls, { yPercent: 25, ease: 'none', stagger: 1 }, 1)
     .from(skillGroupEls, { opacity: 0, stagger: 1 }, 1)
+
+  // Skills / Social links leave with the heading when the section is taller than the viewport,
+  // instead of staying pinned over the cards. Set through the standalone `translate` property:
+  // GSAP owns `transform` on this element for the rotation above.
+  const scrollSocialLinksAway = ({ progress, start, end }: ScrollTrigger) => {
+    socialLinksEl.style.translate = `0 ${-progress * (end - start)}px`
+  }
+
+  $ScrollTrigger.create({
+    trigger: skillsSectionEl,
+    start: 'top top',
+    end: 'bottom bottom',
+    onUpdate: scrollSocialLinksAway,
+    onRefresh: scrollSocialLinksAway,
+  })
 
   // Skills / Download link reveal
   $gsap.timeline(scrubBetween(downloadResumeLinkEl, skillsSectionEl, {

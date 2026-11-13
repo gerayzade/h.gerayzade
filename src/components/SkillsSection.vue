@@ -1,34 +1,45 @@
 <script lang="ts" setup>
-import { Tech, techIcons, techTitles } from '@/entities/tech'
+import { Tech } from '@/entities/tech'
+import SkillGroup from '@/components/SkillGroup.vue'
+import CodeIcon from '@/components/icons/CodeIcon.vue'
 import DownloadIcon from '@/components/icons/DownloadIcon.vue'
+import LayersIcon from '@/components/icons/LayersIcon.vue'
+import PenIcon from '@/components/icons/PenIcon.vue'
+
+// ❗ Keep the meta in sync with the file in `public/`
+const resume = {
+  href: '/resume.h.gerayzade.pdf',
+  filename: 'resume.h.gerayzade.pdf',
+  meta: 'PDF · Updated May 2026 · 282 KB',
+}
 
 const skillGroups = [
   {
     label: 'JS Ecosystem',
-    reverse: false,
-    duration: 130,
+    description: 'Frameworks, libraries and runtime',
+    icon: CodeIcon,
     skills: [
-      Tech.JAVASCRIPT,
-      Tech.TYPESCRIPT,
       Tech.VUE,
       Tech.NUXT,
-      Tech.PINIA,
       Tech.REACT,
       Tech.NEXT_JS,
+      Tech.TYPESCRIPT,
+      Tech.NODE_JS,
+      Tech.EXPRESS,
+      Tech.VITE_JS,
+      Tech.VITEST,
+      Tech.JEST,
+      Tech.JAVASCRIPT,
+      Tech.PINIA,
       Tech.REDUX,
       Tech.JQUERY,
       Tech.GSAP,
-      Tech.JEST,
-      Tech.VITEST,
-      Tech.NODE_JS,
-      Tech.EXPRESS,
       Tech.SWAGGER,
       Tech.POSTMAN,
       Tech.MONGODB,
       Tech.MONGOOSE_JS,
       Tech.JSON,
       Tech.WEBPACK,
-      Tech.VITE_JS,
       Tech.ROLLUP_JS,
       Tech.GULP_JS,
       Tech.NPM,
@@ -39,17 +50,17 @@ const skillGroups = [
   },
   {
     label: 'Markup & UI',
-    reverse: true,
-    duration: 73,
+    description: 'Design, styling and UI development',
+    icon: PenIcon,
     skills: [
+      Tech.TAILWIND_CSS,
       Tech.HTML5,
-      Tech.PUG,
-      Tech.XML,
-      Tech.DJANGO,
-      Tech.HANDLEBARS,
       Tech.CSS3,
       Tech.SASS,
-      Tech.TAILWIND_CSS,
+      Tech.PUG,
+      Tech.HANDLEBARS,
+      Tech.XML,
+      Tech.DJANGO,
       Tech.BOOTSTRAP,
       Tech.VUETIFY,
       Tech.SHADCN_VUE,
@@ -60,24 +71,25 @@ const skillGroups = [
   },
   {
     label: 'CMS, DevOps & Workflow',
-    reverse: false,
-    duration: 87,
+    description: 'Content, deployment and team workflow',
+    icon: LayersIcon,
     skills: [
-      Tech.STRAPI,
       Tech.CONTENTFUL,
+      Tech.SUPABASE,
+      Tech.FIREBASE,
+      Tech.STRAPI,
       Tech.WEBFLOW,
       Tech.WORDPRESS,
-      Tech.FIREBASE,
-      Tech.GIT,
-      Tech.GITHUB,
-      Tech.GITLAB,
-      Tech.BITBUCKET,
+      Tech.VS_CODE,
+      Tech.BROWSER_STACK,
       Tech.DOCKER,
       Tech.VERCEL,
       Tech.DIGITAL_OCEAN,
-      Tech.BROWSER_STACK,
-      Tech.VS_CODE,
+      Tech.GITHUB,
+      Tech.GITLAB,
+      Tech.BITBUCKET,
       Tech.JIRA,
+      Tech.GIT,
       Tech.CONFLUENCE,
       Tech.TRELLO,
     ],
@@ -86,116 +98,52 @@ const skillGroups = [
 </script>
 
 <template>
-  <section
-    ref="section"
-    class="skills-section fullscreen relative flex min-h-max w-full items-center bg-neutral-950 pb-12 pt-24"
-  >
-    <div class="skills-title absolute left-10 top-10 z-10 p-4 text-4xl font-bold uppercase tracking-tighter text-indigo-600">
-      Skills
-    </div>
-    <div class="relative z-10 mx-auto flex w-full max-w-screen-2xl flex-col gap-10 py-6 tracking-tighter">
-      <div
-        v-for="group in skillGroups"
-        :key="group.label"
-        class="skill-group flex w-full flex-col gap-3"
-      >
-        <span class="ml-6 inline-flex items-center gap-2 self-start font-semibold text-neutral-200">
-          <span class="h-px w-6 bg-indigo-600" />
-          {{ group.label }}
-        </span>
+  <section class="skills-section fullscreen relative flex min-h-max w-full flex-col bg-neutral-950 px-4 pb-10 pt-4 sm:px-5 lg:justify-center lg:py-6">
+    <!--
+      On wide screens the section is exactly one viewport tall: the content is centred, so the space
+      above the heading equals the space below the button, and the gaps and card padding scale with
+      the viewport height to keep everything on one screen.
+    -->
+    <div class="relative z-10 mx-auto flex w-full max-w-screen-2xl flex-col">
+      <header class="skills-title px-4 xs:px-6 lg:px-8">
+        <!--
+          On phones the heading starts below the social links, which settle into the top-right corner.
+          On wide screens the negative margin trims the gap above the capitals, so the space above
+          the heading matches the space below the download button.
+        -->
+        <h2 class="mt-14 text-4xl font-extrabold tracking-tight text-white xs:mt-6 xs:text-5xl lg:mt-[-0.14em] lg:text-6xl">
+          Skills &amp; <span class="text-indigo-500">Tools</span>
+        </h2>
+        <p class="mt-3 max-w-xl text-pretty text-neutral-400 xs:mt-4 xs:text-lg">
+          Technologies, tools and platforms I use to build, ship and scale products.
+        </p>
+      </header>
 
-        <div class="marquee w-full overflow-hidden py-2">
-          <ul
-            class="marquee-track flex w-max items-center"
-            :class="{ 'marquee-track--reverse': group.reverse }"
-            :style="{ '--duration': `${group.duration}s` }"
-          >
-            <template
-              v-for="duplicate in 2"
-              :key="duplicate"
-            >
-              <li
-                v-for="skill in group.skills"
-                :key="`${duplicate}-${skill}`"
-                :aria-hidden="duplicate > 1"
-                class="skill-chip inline-flex shrink-0 items-center gap-2 rounded-full border border-indigo-600 px-4 py-2 text-xs font-medium uppercase text-neutral-200 transition-shadow duration-200 hover:shadow-md hover:shadow-indigo-600"
-              >
-                <component
-                  :is="techIcons[skill]"
-                  v-if="techIcons[skill]"
-                  class="h-5 w-auto shrink-0"
-                  aria-hidden="true"
-                />
-                {{ techTitles[skill] }}
-              </li>
-            </template>
-          </ul>
-        </div>
+      <div class="mt-[clamp(2rem,6vh,3.5rem)] flex flex-col gap-4 lg:mt-[clamp(1.25rem,6vh,4rem)] lg:gap-[clamp(0.75rem,2vh,1.25rem)]">
+        <SkillGroup
+          v-for="group in skillGroups"
+          :key="group.label"
+          v-bind="group"
+        />
       </div>
 
-      <div class="mt-auto p-4">
+      <div class="download-resume-link mt-[clamp(2rem,6vh,3.5rem)] flex origin-left flex-wrap items-center gap-x-6 gap-y-4 px-4 xs:px-6 lg:mt-[clamp(1.25rem,6vh,4rem)] lg:px-8">
         <a
-          href="/resume.h.gerayzade.pdf"
-          download="resume.h.gerayzade.pdf"
-          class="download-resume-link group relative inline-flex h-10 items-center gap-2 rounded-full pl-2.5 text-neutral-200 transition-[padding] hover:px-3"
+          :href="resume.href"
+          :download="resume.filename"
+          class="group inline-flex h-14 items-center gap-3 rounded-xl bg-indigo-600 pl-5 pr-6 font-bold text-white transition-colors duration-200 hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-400"
         >
-          <div class="absolute left-0 top-0 size-10 rounded-full bg-indigo-600 transition-[width] group-hover:w-[calc(100%+2px)]" />
           <DownloadIcon
             aria-hidden="true"
-            class="relative h-5 w-auto shrink-0"
+            class="size-6 shrink-0 transition-transform duration-300 ease-out group-hover:translate-y-0.5 motion-reduce:transition-none"
           />
-          <span class="relative pl-2 font-medium transition-[padding] group-hover:pl-0">
-            Download Resume
-          </span>
+          Download Resume
         </a>
+        <p class="flex items-center gap-6 text-sm text-neutral-400">
+          <span class="h-8 w-px bg-white/15 max-xs:hidden" />
+          {{ resume.meta }}
+        </p>
       </div>
     </div>
   </section>
 </template>
-
-<style lang="scss">
-.marquee {
-  --gap: 1rem;
-  position: relative;
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-    inset-block: 0;
-    width: 6%;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  &::before {
-    left: 0;
-    background: linear-gradient(to right, #0a0a0a, transparent);
-  }
-
-  &::after {
-    right: 0;
-    background: linear-gradient(to left, #0a0a0a, transparent);
-  }
-}
-
-.marquee-track {
-  gap: var(--gap);
-  will-change: transform;
-  animation: skills-marquee var(--duration, 40s) linear infinite;
-
-  &--reverse {
-    animation-direction: reverse;
-  }
-
-  &:hover {
-    animation-play-state: paused;
-  }
-}
-
-@keyframes skills-marquee {
-  to {
-    transform: translateX(calc((-100% - var(--gap)) / 2));
-  }
-}
-</style>

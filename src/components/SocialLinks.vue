@@ -8,17 +8,20 @@ import socials from '@/data/socials'
       <a
         v-for="(social, index) in socials"
         :key="social.name"
-        class="scale-0 animate-[social-link-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_forwards] p-3 text-white opacity-0 transition-colors duration-150 [&_svg]:size-6"
+        class="scale-0 animate-[social-link-pop_300ms_cubic-bezier(0.215,0.61,0.355,1.5)_forwards] p-1 text-white opacity-0 transition-colors duration-150 focus-visible:outline-none [&_svg]:size-6"
         :href="social.href"
         :aria-label="`Open ${social.name}`"
         target="_blank"
         rel="noopener"
         :style="{ animationDelay: `${1000 + 150 * index}ms` }"
       >
-        <component
-          :is="social.icon"
-          aria-hidden="true"
-        />
+        <!-- Bare icon by default; the index page fades the tile in over the skills section. -->
+        <span class="social-tile grid size-10 place-items-center rounded-xl border border-transparent">
+          <component
+            :is="social.icon"
+            aria-hidden="true"
+          />
+        </span>
       </a>
     </div>
   </div>
@@ -28,6 +31,10 @@ import socials from '@/data/socials'
 .social-links a {
   @media (hover: hover) {
     @apply hover:text-indigo-600;
+  }
+
+  &:focus-visible .social-tile {
+    @apply outline outline-2 outline-offset-2 outline-indigo-400;
   }
 }
 
