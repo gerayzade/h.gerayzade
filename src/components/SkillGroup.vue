@@ -16,10 +16,21 @@ const { $ScrollTrigger } = useNuxtApp()
 const listId = useId()
 const listRef = useTemplateRef<HTMLElement>('list')
 
+const emit = defineEmits<{
+  // How much taller the list is than its collapsed state (0 while collapsed).
+  extraHeight: [height: number]
+}>()
+
 const isExpanded = ref(false)
 // `null` until the first measurement, so the toggle keeps its slot without flashing a wrong count.
 const hiddenCount = ref<number | null>(null)
 const fullHeight = ref(0)
+const hiddenHeight = ref(0)
+
+watch(
+  () => isExpanded.value ? hiddenHeight.value : 0,
+  height => emit('extraHeight', height),
+)
 
 const toggleLabel = computed(() => isExpanded.value
   ? `Show fewer ${props.label} tools`
@@ -38,9 +49,31 @@ const measure = () => {
   const rowTops = [...new Set(chipEls.map(chipEl => chipEl.offsetTop))].sort((a, b) => a - b)
   const visibleRows = Number(getComputedStyle(listEl).getPropertyValue('--rows')) || 1
   const lastVisibleTop = rowTops[visibleRows - 1] ?? Infinity
+  const firstHiddenTop = rowTops[visibleRows]
+  const gap = parseFloat(getComputedStyle(listEl).rowGap) || 0
 
   hiddenCount.value = chipEls.filter(chipEl => chipEl.offsetTop > lastVisibleTop).length
   fullHeight.value = listEl.scrollHeight
+
+  if (firstHiddenTop === undefined) {
+    hiddenHeight.value = 0
+    return
+  }
+
+  // How much taller the whole card gets when expanded. The collapsed list ends one gap above the
+  // first hidden row, and on wide screens it shares a grid row with the (taller) icon, which
+  // absorbs the first few pixels of growth.
+  const listTop = listEl.offsetTop
+  const collapsedBottom = listTop + firstHiddenTop - (rowTops[0] ?? listTop) - gap
+  const siblingEls = Array.from(listEl.parentElement?.children ?? []) as HTMLElement[]
+  const rowBottom = Math.max(
+    collapsedBottom,
+    ...siblingEls
+      .filter(el => el !== listEl && el.offsetTop < collapsedBottom)
+      .map(el => el.offsetTop + el.offsetHeight),
+  )
+
+  hiddenHeight.value = Math.max(0, listTop + fullHeight.value - rowBottom)
 
   if (!hiddenCount.value) {
     isExpanded.value = false

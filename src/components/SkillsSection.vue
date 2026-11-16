@@ -6,6 +6,11 @@ import DownloadIcon from '@/components/icons/DownloadIcon.vue'
 import LayersIcon from '@/components/icons/LayersIcon.vue'
 import PenIcon from '@/components/icons/PenIcon.vue'
 
+// Expanded groups grow the section by exactly their extra list height, so the centred content
+// keeps its distance from the section top instead of re-centring upwards.
+const extraHeights = ref<Record<string, number>>({})
+const extraHeight = computed(() => Object.values(extraHeights.value).reduce((sum, h) => sum + h, 0))
+
 // ❗ Keep the meta in sync with the file in `public/`
 const resume = {
   href: '/resume.h.gerayzade.pdf',
@@ -98,7 +103,10 @@ const skillGroups = [
 </script>
 
 <template>
-  <section class="skills-section fullscreen relative flex min-h-max w-full flex-col bg-neutral-950 px-4 pb-10 pt-4 sm:px-5 lg:justify-center lg:py-6">
+  <section
+    class="skills-section relative flex min-h-max w-full flex-col bg-neutral-950 px-4 pb-10 pt-4 sm:px-5 lg:justify-center lg:py-6"
+    :style="{ '--extra': `${extraHeight}px` }"
+  >
     <!--
       On wide screens the section is exactly one viewport tall: the content is centred, so the space
       above the heading equals the space below the button, and the gaps and card padding scale with
@@ -124,6 +132,7 @@ const skillGroups = [
           v-for="group in skillGroups"
           :key="group.label"
           v-bind="group"
+          @extra-height="extraHeights[group.label] = $event"
         />
       </div>
 
@@ -147,3 +156,27 @@ const skillGroups = [
     </div>
   </section>
 </template>
+
+<style lang="scss">
+// Registered so it can be transitioned: matches the skill list's max-height transition, so the
+// section grows in lockstep with the list and the centred content never shifts.
+@property --extra {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+.skills-section {
+  // Same as `.fullscreen`, plus the height of any expanded skill lists.
+  height: calc(100vh + var(--extra));
+  transition: --extra 500ms cubic-bezier(0.16, 1, 0.3, 1);
+
+  @supports (height: 100dvh) {
+    height: calc(100dvh + var(--extra));
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+}
+</style>
