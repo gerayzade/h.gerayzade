@@ -119,10 +119,14 @@ onMounted(() => {
     onRefresh: scrollSocialLinksAway,
   })
 
-  // Skills / Download link reveal
+  // Skills / Download link reveal: measured against the collapsed layout. Expanded skill lists push
+  // the link down, and the refresh after each toggle would otherwise shift the range past the current
+  // scroll position and replay the reveal.
+  const getSkillsExtraHeight = () => parseFloat(skillsSectionEl.style.getPropertyValue('--extra')) || 0
+
   $gsap.timeline(scrubBetween(downloadResumeLinkEl, skillsSectionEl, {
-    start: 'top bottom',
-    end: 'bottom bottom',
+    start: () => `top-=${getSkillsExtraHeight()} bottom`,
+    end: () => `bottom-=${getSkillsExtraHeight()} bottom`,
   }))
     .from(downloadResumeLinkEl, { opacity: 0, scale: 0.75 }, 2)
 })
