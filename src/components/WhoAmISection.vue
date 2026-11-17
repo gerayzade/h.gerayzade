@@ -38,10 +38,15 @@ const background = tokenize(`
     <div class="fullscreen sticky top-0 flex min-h-max w-full items-center overflow-hidden">
       <!-- Overscanned by 15% top and bottom so the parallax never exposes an edge. -->
       <img
-        class="who-am-i-image absolute inset-x-0 -top-[15%] h-[130%] w-full object-cover object-left opacity-50 brightness-50 grayscale"
+        class="who-am-i-image absolute inset-x-0 top-[-15%] h-[130%] w-full object-cover object-left opacity-50 brightness-75"
         :src="'/images/baku.webp'"
-        alt="Içeri Şeher"
+        alt="Heydar Aliyev Center"
       >
+      <!-- Darkest behind the copy on the left, with an indigo tint rising from the bottom. -->
+      <div
+        aria-hidden="true"
+        class="who-am-i-overlay absolute inset-0"
+      />
       <!-- Right padding keeps the copy clear of the fixed social links column. -->
       <div class="who-am-i-text relative z-10 w-full px-8 py-24 pr-16 xs:px-12 xs:pr-20 md:px-20 lg:px-24 xl:px-36">
         <h2 class="text-5xl font-extrabold tracking-tight text-white xs:text-6xl lg:text-7xl">
@@ -61,7 +66,7 @@ const background = tokenize(`
           </template>
         </p>
 
-        <p class="mt-6 max-w-[42rem] text-pretty text-lg leading-relaxed text-neutral-400 xs:mt-8 xs:text-xl">
+        <p class="mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-neutral-400 xs:mt-8 xs:text-xl">
           <template
             v-for="(token, i) in background"
             :key="i"
@@ -73,3 +78,20 @@ const background = tokenize(`
     </div>
   </section>
 </template>
+
+<style lang="scss">
+.who-am-i-overlay {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(5, 5, 10, 0.92) 0%,
+      rgba(5, 5, 10, 0.65) 45%,
+      rgba(5, 5, 10, 0.25) 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(79, 70, 229, 0.15),
+      transparent 60%
+    );
+}
+</style>
